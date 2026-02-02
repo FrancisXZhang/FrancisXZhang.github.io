@@ -139,10 +139,13 @@
   <li><strong>1/2025</strong>: I passed my PhD viva with minor corrections. Examiners: <a href="https://www.southampton.ac.uk/people/5y65w6/doctor-hansung-kim">Dr. Hansung Kim</a> and <a href="https://www.durham.ac.uk/staff/stamos-katsigiannis/">Dr. Stamos Katsigiannis</a>.</li>
   <li><strong>12/2024</strong>: <a href="https://arxiv.org/abs/2412.06454"><strong>Adaptive Graph Learning from Spatial Information for Surgical Workflow Anticipation</strong></a> (<strong>IEEE Transactions on Medical Robotics and Bionics</strong>) — accepted.</li>
   <li><strong>11/2024</strong>: I began serving as a Research Associate at the <strong>University of Edinburgh</strong> (PI: <a href="https://homepages.inf.ed.ac.uk/skhadem/">Dr. Mohsen Khadem</a>).</li>
+  <li><strong>9/2024</strong>: <a href="https://link.springer.com/article/10.1186/s12888-024-06096-1"><strong>Unraveling the brain dynamics of Depersonalization-Derealization Disorder: a dynamic functional network connectivity analysis</strong></a> (<strong>BMC Psychiatry</strong>) — accepted.</li>
+  <li><strong>8/2024</strong>: <a href="https://link.springer.com/article/10.1007/s10459-024-10369-5"><strong>Advancing healthcare practice and education via data sharing: demonstrating the utility of open data by training an artificial intelligence model to assess cardiopulmonary resuscitation skills</strong></a> (<strong>Advances in Health Sciences Education</strong>) — accepted. <a href="https://reshare.ukdataservice.ac.uk/857038/">Dataset</a>.</li>
   <li><strong>6/2024</strong>: <a href="https://arxiv.org/abs/2407.02675"><strong>Depth-Aware Endoscopic Video Inpainting</strong></a> (<strong>MICCAI 2024</strong>) — accepted.</li>
   <li><strong>12/2023</strong>: <a href="https://arxiv.org/abs/2312.13776"><strong>Pose-based Tremor Type and Level Analysis for Parkinson's Disease from Video</strong></a> (<strong>International Journal of Computer Assisted Radiology and Surgery</strong>) — accepted.</li>
   <li><strong>11/2023</strong>: I began working as a Research Assistant on the project <strong>Course Development in Edge Computing and Analytics 2.0</strong> (PI: <a href="https://www.durham.ac.uk/staff/anish-jindal/">Dr. Anish Jindal</a>).</li>
   <li><strong>8/2023</strong>: <strong>Correlation-Distance Graph Learning for Treatment Response Prediction from rs-fMRI</strong> (<strong>ICONIP 2023</strong>) — accepted.</li>
+  <li><strong>4/2023</strong>: <a href="https://www.tandfonline.com/doi/full/10.1080/15299732.2023.2231920"><strong>The Treatment of Depersonalization-Derealization Disorder: A Systematic Review</strong></a> (<strong>Journal of Trauma & Dissociation</strong>) — accepted.</li>
 </ol>
 </div>
   </div>
@@ -152,12 +155,15 @@
   <div class="w3-container w3-padding-32" id="projects">
     <h2>Recent Projects</h2>
     <p class="w3-justify">
-      I build geometry-aware perception pipelines for clinical video, focusing on reproducible training/inference code,
-      evaluation harnesses, and integration-friendly outputs (depth, graphs, and structured predictions) that support downstream systems.
+      I design and build applied machine learning systems for safety-critical and data-constrained domains,
+      with an emphasis on end-to-end pipelines: data curation, model training, evaluation, and deployment-ready inference.
+      My work spans geometry-aware perception, temporal and graph-based modeling, and reproducible tooling that produces
+      integration-friendly outputs (e.g., depth, graphs, structured predictions) for downstream systems.
       If you’d like to collaborate, please reach out at
       <a href="mailto:francis.xiatian.zhang@outlook.com">francis.xiatian.zhang@outlook.com</a> (primary) or
       <a href="mailto:francis.zhang@ed.ac.uk">francis.zhang@ed.ac.uk</a> (academic).
     </p>
+    
 
     <div class="w3-row-padding w3-margin-top">
       <div class="w3-third w3-margin-bottom">
@@ -199,6 +205,36 @@
             <li>Bundled training/inference scripts with deterministic preprocessing and checkpoints so biomedical researchers can rerun inpainting and compare outputs to their own reference sets.</li>
           </ul>
           <p class="w3-small"><a style="color:#447ec9" href="https://github.com/FrancisXZhang/DAEVI">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-72089-5_14">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2407.02675">arXiv</a></p>
+        </div>
+      </div>
+
+      <div class="w3-clear"></div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>CPR Skill Assessment</h4>
+          <p class="w3-small"><em>AI Assessment of CPR Skills via Open Data</em></p>
+          <img src="images/CPR.webp" alt="CPR skill assessment visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
+          <p class="w3-small">Uses multi-view pose estimation and graph models to score CPR technique from shared datasets for education and training.</p>
+          <ul class="w3-small">
+            <li>Built a multi-view pose pipeline and ST-GCN scoring model for skill rating.</li>
+            <li>Published an open dataset and evaluation protocol to support reproducible benchmarking.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://github.com/FrancisXZhang/CPR">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/article/10.1007/s10459-024-10369-5">Paper</a> | <a style="color:#447ec9" href="https://reshare.ukdataservice.ac.uk/857038/">Dataset</a></p>
+        </div>
+      </div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>DPD Brain Dynamics</h4>
+          <p class="w3-small"><em>Dynamic Functional Connectivity for Depersonalization-Derealization Disorder (DPD)</em></p>
+          <img src="images/DPD_Dynamics.webp" alt="DPD dynamics brain connectivity visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
+          <p class="w3-small">Analyzes dynamic functional network connectivity to characterize depersonalization-derealization disorder brain dynamics.</p>
+          <ul class="w3-small">
+            <li>Built neuroimaging processing, clustering, and statistical analysis pipelines for dynamic connectivity.</li>
+            <li>Quantified state transitions and connectivity patterns to support clinical interpretation.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://link.springer.com/article/10.1186/s12888-024-06096-1">Paper</a></p>
         </div>
       </div>
     </div>
@@ -282,7 +318,7 @@
       <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-16440-8_47">paper</a> | 
       <a style="color: #447ec9" href="https://arxiv.org/abs/2207.06828">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/mattz10966/SPAPNet">code</a>
-      <br>Contribution: Implemented a pose-tracking classification stack that maps monocular clinical videos to tremor type and severity scores for decision support.
+      <br>Contribution: Led dataset curation and clinical alignment for a pose-based tremor analysis system, ensuring label validity, evaluation protocol design, and meaningful clinical interpretation.
       </li>
   </ol>
 
@@ -299,16 +335,26 @@
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/AdaAnticipation">code</a>
       <br>Contribution: Engineered an adaptive spatial graph learner that updates tool adjacencies on-the-fly to forecast surgical workflow transitions with interpretable attention.
       </li>
-      <li><strong>Pose-based Tremor Type and Level Analysis for Parkinson's Disease from Video</strong>
+      <li><strong>Unraveling the brain dynamics of Depersonalization-Derealization Disorder: a dynamic functional network connectivity analysis</strong>
       <br>
-      Haozheng Zhang, Edmond S. L. Ho, Francis Xiatian Zhang, Silvia Del Din and Hubert P. H. Shum
+      Sisi Zheng, Francis Xiatian Zhang*, Hubert P. H. Shum, Haozheng Zhang, Nan Song, Mingkang Song and Hongxiao Jia
       <br>
-      <em>International Journal of Computer Assisted Radiology and Surgery</em> 2024 | 
-      <a style="color: #447ec9" href="https://arxiv.org/abs/2312.13776">arXiv</a> |
-      <a style="color: #447ec9" href="https://github.com/zhz95/SPA-TPA">code</a>
-      <br>Contribution: Delivered a longitudinal pose-analysis system that links skeletal motion cues to clinical tremor taxonomy and severity grading.
+      <em>BMC Psychiatry</em> 2024 | 
+      <a style="color: #447ec9" href="https://link.springer.com/article/10.1186/s12888-024-06096-1">paper</a>
+      <br>Contribution: Built neuroimaging processing, clustering, and statistical analysis pipelines to quantify brain dynamics.
+      </li>
+      <li><strong>Advancing healthcare practice and education via data sharing: demonstrating the utility of open data by training an artificial intelligence model to assess cardiopulmonary resuscitation skills</strong>
+      <br>
+      Merryn D. Constable, Francis Xiatian Zhang*, Tony Conner, Daniel Monk, Jason Rajsic, Claire Ford, Laura Jillian Park, Alan Platt, Debra Porteous, Lawrence Grierson and Hubert P. H. Shum
+      <br>
+      <em>Advances in Health Sciences Education</em> 2024 | 
+      <a style="color: #447ec9" href="https://link.springer.com/article/10.1007/s10459-024-10369-5">paper</a> |
+      <a style="color: #447ec9" href="https://github.com/FrancisXZhang/CPR">code</a> |
+      <a style="color: #447ec9" href="https://reshare.ukdataservice.ac.uk/857038/">dataset</a>
+      <br>Contribution: Built a multi-view skill-rating ST-GCN pipeline with pose estimation to score CPR performance.
       </li>
   </ol>
+  <p class="w3-small">* = co-first author.</p>
 
   </div>
 
