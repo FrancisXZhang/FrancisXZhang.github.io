@@ -19,6 +19,23 @@
   <style>
   .w3-sidebar a {font-family: "Roboto", sans-serif}
   body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+  .news-scroll {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+  .news-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .news-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  .news-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  .news-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
   </style>
 
   <link rel="icon" type="image/png" href="images/icon.png">
@@ -91,24 +108,32 @@
       <img style="width: 50%; max-width: 200px" alt="profile photo" src="images/Xiatian_Portrait.jpg">
       <h1>Francis Xiatian Zhang, PhD</h1>
       <p class="w3-justify" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;max-width:600px">
-        I am currently a Research Associate at the University of Edinburgh. I obtained my PhD in Computer Science from Durham University (Supervisors: <a href="http://hubertshum.com/">Prof. Hubert P. H. Shum</a> and <a href="https://www.durham.ac.uk/staff/noura-al-moubayed/">Dr. Noura Al Moubayed</a>). 
-        My research focuses on integrating <strong>Geometric Information</strong> into computer vision applications, particularly in the analysis of <strong>Biomedical Engineering</strong> videos. Prior to this, I received my MRes degree from King's College London, my MSc degree from the University of Southampton, and my Bachelor's degree from Beijing University of Chinese Medicine.
+        I am a Research Associate at the University of Edinburgh working on geometry-aware computer vision systems for clinical video analysis, with a focus on bronchoscopy, surgical workflow modeling, and endoscopic video understanding. My work integrates explicit geometric structure (depth, graphs, topology) into deep learning pipelines to improve robustness, interpretability, and deployment readiness in safety-critical medical settings.
+      </p>
+      <p class="w3-justify" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;max-width:600px">
+        Prior to this, I received my MRes degree from King's College London, my MSc degree from the University of Southampton, and my Bachelor's degree from Beijing University of Chinese Medicine.
+      </p>
+      <p class="w3-justify" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;max-width:600px">
+        I am particularly interested in applied research and engineering roles that involve deploying computer vision systems in real-world medical or other safety-critical environments.
       </p>      
         <p class="w3-center">
           <a href="mailto:francis.zhang@ed.ac.uk">Email</a> &nbsp/&nbsp
           <a href="https://www.research.ed.ac.uk/en/persons/francis-xiatian-zhang"> University Profile </a> &nbsp/&nbsp
+          <a href="https://github.com/FrancisXZhang">GitHub</a> &nbsp/&nbsp
           <a href="https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
           <a href="https://www.linkedin.com/in/francis-xiatian-zhang/"> Linkedin </a> &nbsp/&nbsp
           <a href="https://twitter.com/FrancisXZhang"> Twitter </a>
         </p>
-        </tbody></table>
   </div>
 
 <!-- The News Section -->
   <div class="w3-container w3-light-grey w3-padding-32" id="news">
 <h2>News</h2>
+<div class="news-scroll">
 <ol>
-  <li><strong>5/2025</strong>: Our recent work <strong>BREA-Depth: Bronchoscopy Realistic Airway-geometric Depth Estimation</strong> has been early accepted by <strong>MICCAI 2025</strong>.</li>
+  <li><strong>1/2026</strong>: Our recent work <a href="https://link.springer.com/article/10.1186/s12913-026-14010-6"><strong>Understanding psychiatrist readiness for AI: a study of access, self-efficacy, trust, and design expectations</strong></a> has been early accepted by <strong>BMC Health Services Research</strong>.</li>
+  <li><strong>6/2025</strong>: Our recent work <a href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_39"><strong>Navigational Bronchoscopy in Critical Care via End-to-End Pose Regression</strong></a> has been early accepted by <strong>MICCAI 2025</strong>.</li>
+  <li><strong>5/2025</strong>: Our recent work <a href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_8"><strong>BREA-Depth: Bronchoscopy Realistic Airway-geometric Depth Estimation</strong></a> has been early accepted by <strong>MICCAI 2025</strong>.</li>
   <li><strong>5/2025</strong>: I officially received approval for my PhD thesis—finally a formal PhD now!</li>
   <li><strong>1/2025</strong>: I passed my PhD viva with minor corrections. Examiners: <a href="https://www.southampton.ac.uk/people/5y65w6/doctor-hansung-kim">Dr. Hansung Kim</a> and <a href="https://www.durham.ac.uk/staff/stamos-katsigiannis/">Dr. Stamos Katsigiannis</a>.</li>
   <li><strong>12/2024</strong>: Our paper <a href="https://arxiv.org/abs/2412.06454"><strong>Adaptive Graph Learning from Spatial Information for Surgical Workflow Anticipation</strong></a> was accepted by <strong>IEEE Transactions on Medical Robotics and Bionics</strong>.</li>
@@ -118,6 +143,7 @@
   <li><strong>11/2023</strong>: I began working as a Research Assistant on the project <strong>Course Development in Edge Computing and Analytics 2.0</strong> (PI: <a href="https://www.durham.ac.uk/staff/anish-jindal/">Dr. Anish Jindal</a>).</li>
   <li><strong>8/2023</strong>: Our paper <strong>Correlation-Distance Graph Learning for Treatment Response Prediction from rs-fMRI</strong> was accepted by <strong>ICONIP 2023</strong>.</li>
 </ol>
+</div>
   </div>
 
 
@@ -132,6 +158,50 @@
       If you have questions or would like to work together, please feel free to reach out through email at 
       <a href="mailto:francis.xiatian.zhang@outlook.com">francis.xiatian.zhang@outlook.com</a>.
     </p>
+
+    <div class="w3-row-padding w3-margin-top">
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>BREA-Depth</h4>
+          <p class="w3-small"><em>Bronchoscopy Realistic Airway-geometric Depth Estimation</em></p>
+          <img src="images/BREA_Depth.jpg" alt="BREA-Depth airway depth illustration" style="width:100%;border-radius:4px;margin-bottom:8px">
+          <p class="w3-small">Publishes ready-to-run inference code for bronchoscopic navigation research stacks, adapting foundation models to bronchoscopy footage so downstream perception modules inherit reliable depth.</p>
+          <ul class="w3-small">
+            <li>Produces stable depth estimates that downstream planners can use for CT-to-video alignment and collision checks.</li>
+            <li>Pipeline: synthetic airway renderer → domain adaptation → depth inference package → evaluation harness, all versioned so surgical robotics teams can reproduce deployments.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://github.com/SIRGLab/BREA-Depth">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_8">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2509.11885">arXiv</a></p>
+        </div>
+      </div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>Adaptive Graph Learning</h4>
+          <p class="w3-small"><em>Adaptive Graph Learning from Spatial Information for Surgical Workflow Anticipation</em></p>
+          <img src="images/AdaAnticipaiton.png" alt="Adaptive graph learning visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
+          <p class="w3-small">Turns live tool detections into actionable workflow forecasts so scrub nurses and displays know what to prepare next.</p>
+          <ul class="w3-small">
+            <li>Continuously re-learns instrument relationships from spatial cues to surface impending steps minutes ahead.</li>
+            <li>Prototype pipeline: detector feed → spatial graph builder → anticipation head → dashboard concept, with warning throttling heuristics and fallbacks when detections drop.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://github.com/FrancisXZhang/AdaAnticipation">GitHub</a> | <a style="color:#447ec9" href="https://ieeexplore.ieee.org/document/10798514">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2412.06454">arXiv</a></p>
+        </div>
+      </div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>DAEVI</h4>
+          <p class="w3-small"><em>Depth-Aware Endoscopic Video Inpainting</em></p>
+          <img src="images/DAVEI.jpg" alt="DAEVI depth-aware inpainting visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
+          <p class="w3-small">Provides a depth-aware inpainting toolkit that teams can run locally to clean surgeon video archives prior to research sharing or dataset release.</p>
+          <ul class="w3-small">
+            <li>Accepts raw video plus masks and returns temporally consistent fills, ready for downstream training or review.</li>
+            <li>Bundled training/inference scripts with deterministic preprocessing and checkpoints so biomedical researchers can rerun inpainting and compare outputs to their own reference sets.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://github.com/FrancisXZhang/DAEVI">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-72089-5_14">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2407.02675">arXiv</a></p>
+        </div>
+      </div>
+    </div>
 
 <!-- 
 <h4><li>The Graph Representation Learning for Surgical Workflow Anticipation</li></h4>
@@ -185,6 +255,17 @@
 
     <ol>
       <p>
+        <li><strong>BREA-Depth: Bronchoscopy Realistic Airway-geometric Depth Estimation</strong> 
+        <br>
+        Francis Xiatian Zhang, Emile Mackute, Mohammadreza Kasaei, Kevin Dhaliwal, Robert Thomson and Mohsen Khadem
+        <br>
+        <em>MICCAI</em> 2025 | 
+        <a style="color: #447ec9" href="https://papers.miccai.org/miccai-2025/0118-Paper2574.html">paper</a> | 
+        <a style="color: #447ec9" href="https://arxiv.org/abs/2509.11885">arXiv</a> |
+        <a style="color: #447ec9" href="https://github.com/SIRGLab/BREA-Depth">code</a>
+        <br>Contribution: Delivered an airway-aware depth estimation system that adapts foundation models via Depth-aware CycleGAN translation, airway structure losses, and Airway Depth Structure Evaluation metrics for bronchoscopy navigation.
+      </p>
+      <p>
         <li><strong>Depth-Aware Endoscopic Video Inpainting</strong> 
         <br>
         Francis Xiatian Zhang, Shuang Chen, Xianghua Xie and Hubert P. H. Shum
@@ -193,30 +274,8 @@
         <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-72089-5_14">paper</a> | 
         <a style="color: #447ec9" href="https://arxiv.org/abs/2407.02675">arXiv</a> |
         <a style="color: #447ec9" href="https://github.com/FrancisXZhang/DAEVI">code</a>
+        <br>Contribution: Built a depth-aware inpainting system that pairs Spatial-Temporal Guided Depth Estimation with bi-modal fusion and a depth-enhanced discriminator to recover occluded anatomy.
       </p>
-      <p>
-        <li><strong>Correlation-Distance Graph Learning for Treatment Response Prediction from rs-fMRI</strong> 
-        <em><a style="color: #d68d58">Oral Presentation</a></em>
-        <br>
-        Francis Xiatian Zhang, Sisi Zheng, Hubert P. H. Shum, Haozheng Zhang, Nan Song, Mingkang Song and Hongxiao Jia
-        <br>
-        <em>ICONIP</em> 2023 | 
-        <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-981-99-8138-0_24">paper</a> |
-        <a style="color: #447ec9" href="https://arxiv.org/abs/2311.10463">arXiv</a> |
-        <a style="color: #447ec9" href="https://github.com/FrancisXZhang/CDGIN">code</a>
-      </p>
-      <p>
-      <li><strong>Towards Graph Representation Learning Based Surgical Workflow Anticipation</strong> 
-      <em><a style="color: #d68d58">Oral Presentation</a></em>
-      <br>
-      Francis Xiatian Zhang, Noura Al Moubayed and Hubert P. H. Shum
-      <br>
-      <em>BHI</em> 2022 | 
-      <a style="color: #447ec9" href="https://ieeexplore.ieee.org/document/9926801">paper</a> | 
-      <a style="color: #447ec9" href="https://arxiv.org/abs/2208.03824">arXiv</a> |
-      <a style="color: #447ec9" href="https://github.com/FrancisXZhang/GCN_Anticipation">code</a> |
-      <a style="color: #447ec9" href="https://www.youtube.com/watch?v=F9Zo2UF6Ba8">video</a>
-    </p>
     <p>
       <li><strong>Pose-Based Tremor Classification for Parkinson's Disease Diagnosis from Video</strong>
       <br>
@@ -226,6 +285,7 @@
       <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-16440-8_47">paper</a> | 
       <a style="color: #447ec9" href="https://arxiv.org/abs/2207.06828">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/mattz10966/SPAPNet">code</a>
+      <br>Contribution: Implemented a pose-tracking classification stack that maps monocular clinical videos to tremor type and severity scores for decision support.
     </p>
   </ol>
 
@@ -233,7 +293,7 @@
 
   <ol>
     <p>
-      <li><strong>Adaptive Graph Learning From Spatial Information for Surgical Workflow Anticipation</strong>
+      <li><strong>Adaptive Anticipation: Adaptive Graph Learning From Spatial Information for Surgical Workflow Anticipation</strong>
       <br>
       Francis Xiatian Zhang, Jingjing Deng, Robert Lieck and Hubert P. H. Shum
       <br>
@@ -241,6 +301,7 @@
       <a style="color: #447ec9" href="https://ieeexplore.ieee.org/document/10798514">paper</a> |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2412.06454">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/AdaAnticipation">code</a>
+      <br>Contribution: Engineered an adaptive spatial graph learner that updates tool adjacencies on-the-fly to forecast surgical workflow transitions with interpretable attention.
     </p>
     <p>
       <li><strong>Pose-based Tremor Type and Level Analysis for Parkinson's Disease from Video</strong>
@@ -250,6 +311,7 @@
       <em>International Journal of Computer Assisted Radiology and Surgery</em> 2024 | 
       <a style="color: #447ec9" href="https://arxiv.org/abs/2312.13776">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/zhz95/SPA-TPA">code</a>
+      <br>Contribution: Delivered a longitudinal pose-analysis system that links skeletal motion cues to clinical tremor taxonomy and severity grading.
     </p>
   </ol>
 
@@ -260,27 +322,25 @@
     <h2>Experience</h2>
     <ol>
     <p>
-      <li>Research Associate at <a href="https://www.ed.ac.uk/">The University of Edinburgh</a>, 03/2025-.
-      <br>Description: Developing a novel deep learning-based visual navigation system for bronchoscopic robotics
+      <li>Research Associate at <a href="https://www.ed.ac.uk/">The University of Edinburgh</a>, 11/2024-.
+      <br>Develops deep learning visual navigation prototypes for robotic bronchoscopy—airway segmentation, geometric graph construction, and failure-aware inference evaluated on recorded clinical video streams.
       <br>PI: <a href="https://homepages.inf.ed.ac.uk/skhadem/">Dr Mohsen Khadem</a>
     </p>
     <p>
       <li>Research Assistant at <a href="https://www.durham.ac.uk/">Durham University</a>, 10/2023-11/2023;7/2024-9/2024.
-      <br>Project: Course Development in Edge Computing and Analytics 2.0
+      <br>Delivered the Edge Computing and Analytics 2.0 course by teaching end-to-end model workflows—from training to ONNX export and deployment through Python APIs with lightweight GUIs.
       <br>PI: <a href="https://www.durham.ac.uk/staff/anish-jindal/">Dr Anish Jindal</a>
     </p>
     <p>
       <li>Demonstrator at <a href="https://www.durham.ac.uk/">Durham University</a>, 11/2021-6/2024.
-      <br>Undergraduate Module: 1st Year Module: Computational Thinking, 2nd Year Module: Data Science, 
-      <br>Postgraduate Module: Programming for Data Science, Text Mining and Language Analytics
+      <br>Led weekly lab support for Computational Thinking, Data Science, Programming for Data Science, and Text Mining modules—debugging starter code, clarifying marking rubrics, and routing stubborn tooling issues to instructors.
     </p>
     <p><li>Student Helper at <a href="https://www.durham.ac.uk/">Durham University</a>, 08/2022-09/2022.
-      <br> The 21st annual ACM SIGGRAPH / Eurographics Symposium on Computer Animation 
-      <a href="https://computeranimation.org/2022/index.html">(SCA 2022)</a>
+      <br>Handled visiting speaker transport, couch bookings, and leisure tours around Durham Castle for the 21st ACM SIGGRAPH/Eurographics Symposium on Computer Animation <a href="https://computeranimation.org/2022/index.html">(SCA 2022)</a>.
       </p>
     <p>
       <li>Research Assistant at <a href="https://www.northumbria.ac.uk/">Northumbria University</a>, 04/2022-07/2022.
-      <br>Project: Pose Estimation for Health Professional Education: Development of an Objective Computerized Approach for Measuring and Assessing Technical Competencies in Nursing
+      <br>Set up multi-camera capture, collected nursing simulation footage, and led training of the automatic rating system that turned pose-estimation outputs into competency scores.
       <br>PI: <a href="https://www.northumbria.ac.uk/about-us/our-staff/c/merryn-constable/">Dr Merryn Constable</a>
       </p>
     </ol>
@@ -307,20 +367,6 @@
 </div>
 
 <script>
-// Accordion 
-function myAccFunc() {
-  var x = document.getElementById("demoAcc");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
-document.getElementById("myBtn").click();
-
-
 // Open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
