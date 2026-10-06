@@ -171,6 +171,7 @@
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>FDRAS</h4>
+          <p class="w3-small"><strong>MICCAI 2026</strong></p>
           <p class="w3-small"><em>Failure Diagnosis and Repair for Airway Segmentation</em></p>
           <a href="images/FDRAS.png"><img src="images/FDRAS.png" alt="Airway segmentation before and after FDRAS: nnUNet input and refined output on AeroPath" style="width:100%;border-radius:4px;margin-bottom:8px"></a>
           <p class="w3-small">Diagnoses and repairs structural failures in chest CT airway segmentations, using predicted error maps to guide targeted corrections.</p>
@@ -185,6 +186,7 @@
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>CME-AQA</h4>
+          <p class="w3-small"><strong>IEEE Transactions on Neural Systems and Rehabilitation Engineering, 2026</strong></p>
           <p class="w3-small"><em>Cross-view Multimodal Vision-Based Assessment Framework for Traditional Chinese Medicine Rehabilitation Training</em></p>
           <a href="images/CME_AQA.png"><img src="images/CME_AQA.png" alt="TCM-AQA61 dataset examples showing acupuncture and Tuina training from first-person and third-person views" style="width:100%;border-radius:4px;margin-bottom:8px"></a>
           <p class="w3-small">Assesses acupuncture and Tuina training skills by combining visual and pose features, learning from first-person and third-person videos while requiring only a third-person view at inference.</p>
@@ -199,6 +201,7 @@
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>BREA-Depth</h4>
+          <p class="w3-small"><strong>MICCAI 2025</strong></p>
           <p class="w3-small"><em>Bronchoscopy Realistic Airway-geometric Depth Estimation</em></p>
           <img src="images/BREA_Depth.jpg" alt="BREA-Depth airway depth illustration" style="width:100%;border-radius:4px;margin-bottom:8px">
           <p class="w3-small">Publishes ready-to-run inference code for bronchoscopic navigation research stacks, adapting foundation models to bronchoscopy footage so downstream perception modules inherit reliable depth.</p>
@@ -215,6 +218,7 @@
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>Adaptive Graph Learning</h4>
+          <p class="w3-small"><strong>IEEE Transactions on Medical Robotics and Bionics, 2024</strong></p>
           <p class="w3-small"><em>Adaptive Graph Learning from Spatial Information for Surgical Workflow Anticipation</em></p>
           <img src="images/AdaAnticipation.png" alt="Adaptive graph learning visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
           <p class="w3-small">Turns live tool detections into actionable workflow forecasts so scrub nurses and displays know what to prepare next.</p>
@@ -229,6 +233,7 @@
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>DAEVI</h4>
+          <p class="w3-small"><strong>MICCAI 2024</strong></p>
           <p class="w3-small"><em>Depth-Aware Endoscopic Video Inpainting</em></p>
           <img src="images/DAEVI.jpg" alt="DAEVI depth-aware inpainting visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
           <p class="w3-small">Provides a depth-aware inpainting toolkit that teams can run locally to clean surgeon video archives prior to research sharing or dataset release.</p>
@@ -240,35 +245,6 @@
         </div>
       </div>
 
-      <div class="w3-third w3-margin-bottom">
-        <div class="w3-card w3-white w3-padding" style="height:100%">
-          <h4>CPR Skill Assessment</h4>
-          <p class="w3-small"><em>AI Assessment of CPR Skills via Open Data</em></p>
-          <img src="images/CPR.webp" alt="CPR skill assessment visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
-          <p class="w3-small">Uses multi-view pose estimation and graph models to score CPR technique from shared datasets for education and training.</p>
-          <ul class="w3-small">
-            <li>Built a multi-view pose pipeline and ST-GCN scoring model for skill rating.</li>
-            <li>Published an open dataset and evaluation protocol to support reproducible benchmarking.</li>
-          </ul>
-          <p class="w3-small"><a style="color:#447ec9" href="https://github.com/FrancisXZhang/CPR">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/article/10.1007/s10459-024-10369-5">Paper</a> | <a style="color:#447ec9" href="https://reshare.ukdataservice.ac.uk/857038/">Dataset</a></p>
-        </div>
-      </div>
-
-      <div class="w3-clear"></div>
-
-      <div class="w3-third w3-margin-bottom">
-        <div class="w3-card w3-white w3-padding" style="height:100%">
-          <h4>DPD Brain Dynamics</h4>
-          <p class="w3-small"><em>Dynamic Functional Connectivity for Depersonalization-Derealization Disorder (DPD)</em></p>
-          <img src="images/DPD_Dynamics.webp" alt="DPD dynamics brain connectivity visualization" style="width:100%;border-radius:4px;margin-bottom:8px">
-          <p class="w3-small">Analyzes dynamic functional network connectivity to characterize depersonalization-derealization disorder brain dynamics.</p>
-          <ul class="w3-small">
-            <li>Built neuroimaging processing, clustering, and statistical analysis pipelines for dynamic connectivity.</li>
-            <li>Quantified state transitions and connectivity patterns to support clinical interpretation.</li>
-          </ul>
-          <p class="w3-small"><a style="color:#447ec9" href="https://link.springer.com/article/10.1186/s12888-024-06096-1">Paper</a></p>
-        </div>
-      </div>
     </div>
 
 <!-- 
@@ -313,15 +289,57 @@
  <!-- The Publications Section -->
   <div class="w3-container w3-padding-32" id="publications">
     <h2>Research</h2>
-    <p class="w3-left-align" style="line-height:200%">My previous research can be primarily categorized into three parts: 
+    <p class="w3-left-align" style="line-height:200%">My research focuses on
       <strong>Computer-assisted Intervention</strong>,
-      <strong>Clinical Outcome Analysis</strong>, and
-      <strong>Evidence-based Medicine</strong>.
-      Below are some of my selected publications. A complete list of my publications can be found on my <a href="https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en">Google Scholar</a> page.
+      <strong>Medical Robotics</strong>, and
+      <strong>Vision-based Skill Assessment</strong>.
+      Below are selected publications, including recent collaborations in biomedical engineering and medical robotics.
+      A complete list of my publications can be found on my <a href="https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en">Google Scholar</a> page.
     </p>
     <h4> Conference Papers:</h4>
 
   <ol>
+      <li><strong>FDRAS: Failure Diagnosis and Repair for Airway Segmentation</strong>
+      <br>
+      Francis Xiatian Zhang, Kevin Dhaliwal and Mohsen Khadem
+      <br>
+      <em>MICCAI</em> 2026 |
+      <a style="color: #447ec9" href="https://papers.miccai.org/miccai-2026/paper/2460_paper.pdf">paper</a> |
+      <a style="color: #447ec9" href="https://github.com/SIRGLab/FDRAS">code</a>
+      <br>Predicts geometric and connectivity error maps to guide targeted repair of airway segmentations under domain shift.
+      </li>
+      <li><strong>Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion</strong>
+      <br>
+      Mohammadreza Kasaei, Francis Xiatian Zhang, Feng Li, Farshid Alambeigi, Kevin Dhaliwal and Mohsen Khadem
+      <br>
+      <em>IEEE International Conference on Robotics and Automation (ICRA)</em> 2026 |
+      <a style="color: #447ec9" href="https://arxiv.org/abs/2607.05162">arXiv</a>
+      <br>Combines airway geometry cues with high-gain observer fusion to improve vision-based bronchoscopic tracking and reduce trajectory drift.
+      </li>
+      <li><strong>A Model-Based Framework for Assessing Operator Performance in Navigational Bronchoscopy</strong>
+      <br>
+      Zhaoxing Deng, David Hanley, Francis Xiatian Zhang, Kevin Dhaliwal and Mohsen Khadem
+      <br>
+      <em>IEEE International Conference on Robotics and Automation (ICRA)</em> 2026 |
+      <a style="color: #447ec9" href="https://ras.papercept.net/conferences/conferences/ICRA26/program/ICRA26_ContentListWeb_3.html">conference program</a>
+      <br>Uses tracked bronchoscope poses, kinematic constraints, and model-predictive reference trajectories for objective operator performance assessment.
+      </li>
+      <li><strong>ROOM: A Physics-Based Continuum Robot Simulator for Photorealistic Medical Datasets Generation</strong>
+      <br>
+      Salvatore Esposito, Matías Mattamala, Daniel Rebain, Francis Xiatian Zhang, Kevin Dhaliwal, Mohsen Khadem and Subramanian Ramamoorthy
+      <br>
+      <em>IEEE International Conference on Robotics and Automation (ICRA)</em> 2026 |
+      <a style="color: #447ec9" href="https://arxiv.org/abs/2509.13177">arXiv</a>
+      <br>Integrates continuum robot simulation with photorealistic rendering to generate medical datasets for robotic bronchoscopy research.
+      </li>
+      <li><strong>Navigational Bronchoscopy in Critical Care via End-to-End Pose Regression</strong>
+      <br>
+      Emile Mackute, Francis Xiatian Zhang, Kevin Dhaliwal and Mohsen Khadem
+      <br>
+      <em>MICCAI</em> 2025 |
+      <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_39">paper</a>
+      <br>Estimates bronchoscope pose directly from video for navigation in critical care settings.
+      </li>
       <li><strong>BREA-Depth: Bronchoscopy Realistic Airway-geometric Depth Estimation</strong> 
       <br>
       Francis Xiatian Zhang, Emile Mackute, Mohammadreza Kasaei, Kevin Dhaliwal, Robert Thomson and Mohsen Khadem
@@ -357,6 +375,16 @@
   <h4> Journal Papers:</h4>
 
   <ol>
+      <li><strong>Cross-view Multimodal Vision-Based Assessment Framework for Traditional Chinese Medicine Rehabilitation Training</strong>
+      <br>
+      Francis Xiatian Zhang, Hao Yao, Shengxuan Chen, Hong Zhu, Hongxiao Jia, Sisi Zheng and Hubert P. H. Shum
+      <br>
+      <em>IEEE Transactions on Neural Systems and Rehabilitation Engineering</em> 2026 |
+      <a style="color: #447ec9" href="https://ieeexplore.ieee.org/document/11573058">paper</a> |
+      <a style="color: #447ec9" href="https://arxiv.org/abs/2606.28104">arXiv</a> |
+      <a style="color: #447ec9" href="https://github.com/FrancisXZhang/cme-aqa">code</a>
+      <br>Combines visual and pose features with cross-view training for acupuncture and Tuina skill assessment, supported by two expert-annotated dual-view datasets.
+      </li>
       <li><strong>Adaptive Anticipation: Adaptive Graph Learning From Spatial Information for Surgical Workflow Anticipation</strong>
       <br>
       Francis Xiatian Zhang, Jingjing Deng, Robert Lieck and Hubert P. H. Shum
@@ -366,6 +394,15 @@
       <a style="color: #447ec9" href="https://arxiv.org/abs/2412.06454">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/AdaAnticipation">code</a>
       <br>Contribution: Engineered an adaptive spatial graph learner that updates tool adjacencies on-the-fly to forecast surgical workflow transitions with interpretable attention.
+      </li>
+      <li><strong>Pose-based Tremor Type and Level Analysis for Parkinson's Disease from Video</strong>
+      <br>
+      Haozheng Zhang, Edmond S. L. Ho, Francis Xiatian Zhang, Silvia Del Din and Hubert P. H. Shum
+      <br>
+      <em>International Journal of Computer Assisted Radiology and Surgery</em> 2024 |
+      <a style="color: #447ec9" href="https://link.springer.com/article/10.1007/s11548-023-03052-4">paper</a> |
+      <a style="color: #447ec9" href="https://arxiv.org/abs/2312.13776">arXiv</a>
+      <br>Uses video-derived pose representations to classify Parkinsonian tremor types and assess tremor levels.
       </li>
       <li><strong>Unraveling the brain dynamics of Depersonalization-Derealization Disorder: a dynamic functional network connectivity analysis</strong>
       <br>
