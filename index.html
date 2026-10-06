@@ -132,7 +132,7 @@
 <h2>News</h2>
 <div class="news-scroll">
 <ol>
-  <li><strong>6/2026</strong>: <strong>FDRAS: Failure Diagnosis and Repair for Airway Segmentation</strong> — accepted at <strong>MICCAI 2026</strong>.</li>
+  <li><strong>6/2026</strong>: <a href="https://papers.miccai.org/miccai-2026/paper/2460_paper.pdf"><strong>FDRAS: Failure Diagnosis and Repair for Airway Segmentation</strong></a> — accepted at <strong>MICCAI 2026</strong>.</li>
   <li><strong>6/2026</strong>: <a href="https://ieeexplore.ieee.org/document/11573058"><strong>Cross-view Multimodal Vision-Based Assessment Framework for Traditional Chinese Medicine Rehabilitation Training</strong></a> (<strong>IEEE Transactions on Neural Systems and Rehabilitation Engineering</strong>) — accepted.</li>
   <li><strong>2/2026</strong>: Three papers at <strong>ICRA</strong> — <a href="https://arxiv.org/abs/2509.13177"><strong>ROOM: A Physics-Based Continuum Robot Simulator for Photorealistic Medical Datasets Generation</strong></a>, <strong>A Model-Based Framework for Assessing Operator Performance in Navigational Bronchoscopy</strong> (preprint soon), and <strong>Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion</strong> (preprint soon) — accepted.</li>
   <li><strong>1/2026</strong>: <a href="https://link.springer.com/article/10.1186/s12913-026-14010-6"><strong>Understanding psychiatrist readiness for AI: a study of access, self-efficacy, trust, and design expectations</strong></a> (<strong>BMC Health Services Research</strong>) — accepted.</li>
@@ -170,6 +170,34 @@
     <div class="w3-row-padding w3-margin-top">
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>FDRAS</h4>
+          <p class="w3-small"><em>Failure Diagnosis and Repair for Airway Segmentation</em></p>
+          <a href="images/FDRAS.png"><img src="images/FDRAS.png" alt="Airway segmentation before and after FDRAS: nnUNet input and refined output on AeroPath" style="width:100%;border-radius:4px;margin-bottom:8px"></a>
+          <p class="w3-small">Diagnoses and repairs structural failures in chest CT airway segmentations, using predicted error maps to guide targeted corrections.</p>
+          <ul class="w3-small">
+            <li>Localizes boundary discrepancies and disconnected branches with geometric and tree-level connectivity error maps.</li>
+            <li>Provides a trained checkpoint, training and inference scripts, and error-map visualization tools.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://github.com/SIRGLab/FDRAS">GitHub</a> | <a style="color:#447ec9" href="https://papers.miccai.org/miccai-2026/paper/2460_paper.pdf">Paper</a></p>
+        </div>
+      </div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>CME-AQA</h4>
+          <p class="w3-small"><em>Cross-view Multimodal Vision-Based Assessment Framework for Traditional Chinese Medicine Rehabilitation Training</em></p>
+          <a href="images/CME_AQA.png"><img src="images/CME_AQA.png" alt="TCM-AQA61 dataset examples showing acupuncture and Tuina training from first-person and third-person views" style="width:100%;border-radius:4px;margin-bottom:8px"></a>
+          <p class="w3-small">Assesses acupuncture and Tuina training skills by combining visual and pose features, learning from first-person and third-person videos while requiring only a third-person view at inference.</p>
+          <ul class="w3-small">
+            <li>Introduces two synchronized dual-view datasets with expert annotations from 61 participants for each task.</li>
+            <li>Provides training and inference code, sample videos, and demonstrations of skill assessment.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://github.com/FrancisXZhang/cme-aqa">GitHub</a> | <a style="color:#447ec9" href="https://ieeexplore.ieee.org/document/11573058">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2606.28104">arXiv</a></p>
+        </div>
+      </div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>BREA-Depth</h4>
           <p class="w3-small"><em>Bronchoscopy Realistic Airway-geometric Depth Estimation</em></p>
           <img src="images/BREA_Depth.jpg" alt="BREA-Depth airway depth illustration" style="width:100%;border-radius:4px;margin-bottom:8px">
@@ -181,6 +209,8 @@
           <p class="w3-small"><a style="color:#447ec9" href="https://github.com/SIRGLab/BREA-Depth">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_8">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2509.11885">arXiv</a></p>
         </div>
       </div>
+
+      <div class="w3-clear"></div>
 
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
@@ -210,8 +240,6 @@
         </div>
       </div>
 
-      <div class="w3-clear"></div>
-
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>CPR Skill Assessment</h4>
@@ -225,6 +253,8 @@
           <p class="w3-small"><a style="color:#447ec9" href="https://github.com/FrancisXZhang/CPR">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/article/10.1007/s10459-024-10369-5">Paper</a> | <a style="color:#447ec9" href="https://reshare.ukdataservice.ac.uk/857038/">Dataset</a></p>
         </div>
       </div>
+
+      <div class="w3-clear"></div>
 
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
