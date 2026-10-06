@@ -36,6 +36,14 @@
   .news-scroll::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+  #publications [hidden] {display:none !important;}
+  .publication-filters {display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:20px 0 8px;}
+  .publication-filters label {display:flex;flex-direction:column;gap:4px;font-size:13px;flex:1 1 130px;}
+  .publication-filters .publication-search {flex:2 1 220px;}
+  .publication-filters input,.publication-filters select {width:100%;padding:8px;border:1px solid #bbb;border-radius:4px;background:#fff;color:#222;min-height:40px;}
+  .publication-filters button {min-height:40px;border-radius:4px;}
+  .publication-tags {display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 16px;}
+  .publication-tag {font-size:12px;padding:3px 8px;background:#eef3fa;color:#315f9c;border-radius:12px;}
   </style>
 
   <link rel="icon" type="image/png" href="images/icon.png">
@@ -296,10 +304,28 @@
       Below are selected publications, including recent collaborations in biomedical engineering and medical robotics.
       A complete list of my publications can be found on my <a href="https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en">Google Scholar</a> page.
     </p>
+    <div class="publication-filters" id="publication-filters" hidden>
+      <label class="publication-search" for="publication-search">Search papers
+        <input id="publication-search" type="search" placeholder="Title, author, or keyword">
+      </label>
+      <label for="publication-topic">Topic
+        <select id="publication-topic"><option value="">All topics</option></select>
+      </label>
+      <label for="publication-year">Year
+        <select id="publication-year"><option value="">All years</option></select>
+      </label>
+      <label for="publication-venue">Venue
+        <select id="publication-venue"><option value="">All venues</option></select>
+      </label>
+      <button id="publication-reset" type="button" class="w3-button w3-light-grey">Clear filters</button>
+    </div>
+    <p id="publication-count" class="w3-small" role="status" hidden></p>
+    <p id="publication-empty" hidden>No papers match these filters. Try another keyword or clear the filters.</p>
+    <div class="publication-group">
     <h4> Conference Papers:</h4>
 
   <ol>
-      <li><strong>FDRAS: Failure Diagnosis and Repair for Airway Segmentation</strong>
+      <li data-year="2026" data-venue="MICCAI" data-topics="Bronchoscopy|Segmentation"><strong>FDRAS: Failure Diagnosis and Repair for Airway Segmentation</strong>
       <br>
       Francis Xiatian Zhang, Kevin Dhaliwal and Mohsen Khadem
       <br>
@@ -307,40 +333,45 @@
       <a style="color: #447ec9" href="https://papers.miccai.org/miccai-2026/paper/2460_paper.pdf">paper</a> |
       <a style="color: #447ec9" href="https://github.com/SIRGLab/FDRAS">code</a>
       <br>Predicts geometric and connectivity error maps to guide targeted repair of airway segmentations under domain shift.
+      <div class="publication-tags"><span class="publication-tag">Bronchoscopy</span><span class="publication-tag">Segmentation</span></div>
       </li>
-      <li><strong>Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion</strong>
+      <li data-year="2026" data-venue="ICRA" data-topics="Bronchoscopy|Medical Robotics"><strong>Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion</strong>
       <br>
       Mohammadreza Kasaei, Francis Xiatian Zhang, Feng Li, Farshid Alambeigi, Kevin Dhaliwal and Mohsen Khadem
       <br>
       <em>IEEE International Conference on Robotics and Automation (ICRA)</em> 2026 |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2607.05162">arXiv</a>
       <br>Combines airway geometry cues with high-gain observer fusion to improve vision-based bronchoscopic tracking and reduce trajectory drift.
+      <div class="publication-tags"><span class="publication-tag">Bronchoscopy</span><span class="publication-tag">Medical Robotics</span></div>
       </li>
-      <li><strong>A Model-Based Framework for Assessing Operator Performance in Navigational Bronchoscopy</strong>
+      <li data-year="2026" data-venue="ICRA" data-topics="Medical Robotics|Skill Assessment"><strong>A Model-Based Framework for Assessing Operator Performance in Navigational Bronchoscopy</strong>
       <br>
       Zhaoxing Deng, David Hanley, Francis Xiatian Zhang, Kevin Dhaliwal and Mohsen Khadem
       <br>
       <em>IEEE International Conference on Robotics and Automation (ICRA)</em> 2026 |
       <a style="color: #447ec9" href="https://ras.papercept.net/conferences/conferences/ICRA26/program/ICRA26_ContentListWeb_3.html">conference program</a>
       <br>Uses tracked bronchoscope poses, kinematic constraints, and model-predictive reference trajectories for objective operator performance assessment.
+      <div class="publication-tags"><span class="publication-tag">Medical Robotics</span><span class="publication-tag">Skill Assessment</span></div>
       </li>
-      <li><strong>ROOM: A Physics-Based Continuum Robot Simulator for Photorealistic Medical Datasets Generation</strong>
+      <li data-year="2026" data-venue="ICRA" data-topics="Medical Robotics|Simulation"><strong>ROOM: A Physics-Based Continuum Robot Simulator for Photorealistic Medical Datasets Generation</strong>
       <br>
       Salvatore Esposito, Matías Mattamala, Daniel Rebain, Francis Xiatian Zhang, Kevin Dhaliwal, Mohsen Khadem and Subramanian Ramamoorthy
       <br>
       <em>IEEE International Conference on Robotics and Automation (ICRA)</em> 2026 |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2509.13177">arXiv</a>
       <br>Integrates continuum robot simulation with photorealistic rendering to generate medical datasets for robotic bronchoscopy research.
+      <div class="publication-tags"><span class="publication-tag">Medical Robotics</span><span class="publication-tag">Simulation</span></div>
       </li>
-      <li><strong>Navigational Bronchoscopy in Critical Care via End-to-End Pose Regression</strong>
+      <li data-year="2025" data-venue="MICCAI" data-topics="Bronchoscopy|Medical Robotics"><strong>Navigational Bronchoscopy in Critical Care via End-to-End Pose Regression</strong>
       <br>
       Emile Mackute, Francis Xiatian Zhang, Kevin Dhaliwal and Mohsen Khadem
       <br>
       <em>MICCAI</em> 2025 |
       <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_39">paper</a>
       <br>Estimates bronchoscope pose directly from video for navigation in critical care settings.
+      <div class="publication-tags"><span class="publication-tag">Bronchoscopy</span><span class="publication-tag">Medical Robotics</span></div>
       </li>
-      <li><strong>BREA-Depth: Bronchoscopy Realistic Airway-geometric Depth Estimation</strong> 
+      <li data-year="2025" data-venue="MICCAI" data-topics="Bronchoscopy|Depth Estimation"><strong>BREA-Depth: Bronchoscopy Realistic Airway-geometric Depth Estimation</strong>
       <br>
       Francis Xiatian Zhang, Emile Mackute, Mohammadreza Kasaei, Kevin Dhaliwal, Robert Thomson and Mohsen Khadem
       <br>
@@ -349,8 +380,9 @@
       <a style="color: #447ec9" href="https://arxiv.org/abs/2509.11885">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/SIRGLab/BREA-Depth">code</a>
       <br>Contribution: Delivered an airway-aware depth estimation system that adapts foundation models via Depth-aware CycleGAN translation, airway structure losses, and Airway Depth Structure Evaluation metrics for bronchoscopy navigation.
+      <div class="publication-tags"><span class="publication-tag">Bronchoscopy</span><span class="publication-tag">Depth Estimation</span></div>
       </li>
-      <li><strong>Depth-Aware Endoscopic Video Inpainting</strong> 
+      <li data-year="2024" data-venue="MICCAI" data-topics="Depth Estimation|Video Analysis"><strong>Depth-Aware Endoscopic Video Inpainting</strong>
       <br>
       Francis Xiatian Zhang, Shuang Chen, Xianghua Xie and Hubert P. H. Shum
       <br>
@@ -359,8 +391,9 @@
       <a style="color: #447ec9" href="https://arxiv.org/abs/2407.02675">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/DAEVI">code</a>
       <br>Contribution: Built a depth-aware inpainting system that pairs Spatial-Temporal Guided Depth Estimation with bi-modal fusion and a depth-enhanced discriminator to recover occluded anatomy.
+      <div class="publication-tags"><span class="publication-tag">Depth Estimation</span><span class="publication-tag">Video Analysis</span></div>
       </li>
-      <li><strong>Pose-Based Tremor Classification for Parkinson's Disease Diagnosis from Video</strong>
+      <li data-year="2022" data-venue="MICCAI" data-topics="Movement Analysis|Video Analysis"><strong>Pose-Based Tremor Classification for Parkinson's Disease Diagnosis from Video</strong>
       <br>
       Haozheng Zhang, Edmond S. L. Ho, Francis Xiatian Zhang and Hubert P. H. Shum
       <br>
@@ -369,13 +402,16 @@
       <a style="color: #447ec9" href="https://arxiv.org/abs/2207.06828">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/mattz10966/SPAPNet">code</a>
       <br>Contribution: Led dataset curation and clinical alignment for a pose-based tremor analysis system, ensuring label validity, evaluation protocol design, and meaningful clinical interpretation.
+      <div class="publication-tags"><span class="publication-tag">Movement Analysis</span><span class="publication-tag">Video Analysis</span></div>
       </li>
   </ol>
 
+    </div>
+    <div class="publication-group">
   <h4> Journal Papers:</h4>
 
   <ol>
-      <li><strong>Cross-view Multimodal Vision-Based Assessment Framework for Traditional Chinese Medicine Rehabilitation Training</strong>
+      <li data-year="2026" data-venue="IEEE TNSRE" data-topics="Skill Assessment|Video Analysis" data-keywords="CME-AQA TCM-AQA61 acupuncture Tuina"><strong>Cross-view Multimodal Vision-Based Assessment Framework for Traditional Chinese Medicine Rehabilitation Training</strong>
       <br>
       Francis Xiatian Zhang, Hao Yao, Shengxuan Chen, Hong Zhu, Hongxiao Jia, Sisi Zheng and Hubert P. H. Shum
       <br>
@@ -384,8 +420,9 @@
       <a style="color: #447ec9" href="https://arxiv.org/abs/2606.28104">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/cme-aqa">code</a>
       <br>Combines visual and pose features with cross-view training for acupuncture and Tuina skill assessment, supported by two expert-annotated dual-view datasets.
+      <div class="publication-tags"><span class="publication-tag">Skill Assessment</span><span class="publication-tag">Video Analysis</span></div>
       </li>
-      <li><strong>Adaptive Anticipation: Adaptive Graph Learning From Spatial Information for Surgical Workflow Anticipation</strong>
+      <li data-year="2024" data-venue="IEEE TMRB" data-topics="Surgical Workflow|Video Analysis"><strong>Adaptive Anticipation: Adaptive Graph Learning From Spatial Information for Surgical Workflow Anticipation</strong>
       <br>
       Francis Xiatian Zhang, Jingjing Deng, Robert Lieck and Hubert P. H. Shum
       <br>
@@ -394,8 +431,9 @@
       <a style="color: #447ec9" href="https://arxiv.org/abs/2412.06454">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/AdaAnticipation">code</a>
       <br>Contribution: Engineered an adaptive spatial graph learner that updates tool adjacencies on-the-fly to forecast surgical workflow transitions with interpretable attention.
+      <div class="publication-tags"><span class="publication-tag">Surgical Workflow</span><span class="publication-tag">Video Analysis</span></div>
       </li>
-      <li><strong>Pose-based Tremor Type and Level Analysis for Parkinson's Disease from Video</strong>
+      <li data-year="2024" data-venue="IJCARS" data-topics="Movement Analysis|Video Analysis"><strong>Pose-based Tremor Type and Level Analysis for Parkinson's Disease from Video</strong>
       <br>
       Haozheng Zhang, Edmond S. L. Ho, Francis Xiatian Zhang, Silvia Del Din and Hubert P. H. Shum
       <br>
@@ -403,16 +441,18 @@
       <a style="color: #447ec9" href="https://link.springer.com/article/10.1007/s11548-023-03052-4">paper</a> |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2312.13776">arXiv</a>
       <br>Uses video-derived pose representations to classify Parkinsonian tremor types and assess tremor levels.
+      <div class="publication-tags"><span class="publication-tag">Movement Analysis</span><span class="publication-tag">Video Analysis</span></div>
       </li>
-      <li><strong>Unraveling the brain dynamics of Depersonalization-Derealization Disorder: a dynamic functional network connectivity analysis</strong>
+      <li data-year="2024" data-venue="BMC Psychiatry" data-topics="Neuroimaging"><strong>Unraveling the brain dynamics of Depersonalization-Derealization Disorder: a dynamic functional network connectivity analysis</strong>
       <br>
       Sisi Zheng, Francis Xiatian Zhang*, Hubert P. H. Shum, Haozheng Zhang, Nan Song, Mingkang Song and Hongxiao Jia
       <br>
       <em>BMC Psychiatry</em> 2024 | 
       <a style="color: #447ec9" href="https://link.springer.com/article/10.1186/s12888-024-06096-1">paper</a>
       <br>Contribution: Built neuroimaging processing, clustering, and statistical analysis pipelines to quantify brain dynamics.
+      <div class="publication-tags"><span class="publication-tag">Neuroimaging</span></div>
       </li>
-      <li><strong>Advancing healthcare practice and education via data sharing: demonstrating the utility of open data by training an artificial intelligence model to assess cardiopulmonary resuscitation skills</strong>
+      <li data-year="2024" data-venue="Advances in Health Sciences Education" data-topics="Skill Assessment|Movement Analysis"><strong>Advancing healthcare practice and education via data sharing: demonstrating the utility of open data by training an artificial intelligence model to assess cardiopulmonary resuscitation skills</strong>
       <br>
       Merryn D. Constable, Francis Xiatian Zhang*, Tony Conner, Daniel Monk, Jason Rajsic, Claire Ford, Laura Jillian Park, Alan Platt, Debra Porteous, Lawrence Grierson and Hubert P. H. Shum
       <br>
@@ -421,8 +461,10 @@
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/CPR">code</a> |
       <a style="color: #447ec9" href="https://reshare.ukdataservice.ac.uk/857038/">dataset</a>
       <br>Contribution: Built a multi-view skill-rating ST-GCN pipeline with pose estimation to score CPR performance.
+      <div class="publication-tags"><span class="publication-tag">Skill Assessment</span><span class="publication-tag">Movement Analysis</span></div>
       </li>
   </ol>
+    </div>
   <p class="w3-small">* = co-first author.</p>
 
   </div>
@@ -483,6 +525,55 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("myOverlay").style.display = "none";
 }
+
+// Combine publication filters while retaining the conference/journal grouping.
+(function () {
+  const section = document.getElementById('publications');
+  const papers = Array.from(section.querySelectorAll('.publication-group li'));
+  const search = document.getElementById('publication-search');
+  const topic = document.getElementById('publication-topic');
+  const year = document.getElementById('publication-year');
+  const venue = document.getElementById('publication-venue');
+  const count = document.getElementById('publication-count');
+  const empty = document.getElementById('publication-empty');
+
+  function addOptions(select, values) {
+    values.forEach(value => select.add(new Option(value, value)));
+  }
+  addOptions(topic, [...new Set(papers.flatMap(paper => paper.dataset.topics.split('|')))].sort());
+  addOptions(year, [...new Set(papers.map(paper => paper.dataset.year))].sort().reverse());
+  addOptions(venue, [...new Set(papers.map(paper => paper.dataset.venue))].sort());
+
+  function filterPapers() {
+    const words = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    let visible = 0;
+    papers.forEach(paper => {
+      const text = (paper.textContent + ' ' + paper.dataset.topics + ' ' + paper.dataset.venue + ' ' + (paper.dataset.keywords || '')).toLowerCase();
+      const matches = words.every(word => text.includes(word)) &&
+        (!topic.value || paper.dataset.topics.split('|').includes(topic.value)) &&
+        (!year.value || paper.dataset.year === year.value) &&
+        (!venue.value || paper.dataset.venue === venue.value);
+      paper.hidden = !matches;
+      if (matches) visible++;
+    });
+    section.querySelectorAll('.publication-group').forEach(group => {
+      group.hidden = !Array.from(group.querySelectorAll('li')).some(paper => !paper.hidden);
+    });
+    count.textContent = 'Showing ' + visible + ' of ' + papers.length + ' papers';
+    empty.hidden = visible > 0;
+  }
+
+  search.addEventListener('input', filterPapers);
+  [topic, year, venue].forEach(select => select.addEventListener('change', filterPapers));
+  document.getElementById('publication-reset').addEventListener('click', () => {
+    [search, topic, year, venue].forEach(control => { control.value = ''; });
+    filterPapers();
+    search.focus();
+  });
+  document.getElementById('publication-filters').hidden = false;
+  count.hidden = false;
+  filterPapers();
+})();
 </script>
 
 </body>
