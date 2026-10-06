@@ -37,13 +37,14 @@
     background: #555;
   }
   #publications [hidden] {display:none !important;}
-  .publication-filters {display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:20px 0 8px;}
-  .publication-filters label {display:flex;flex-direction:column;gap:4px;font-size:13px;flex:1 1 130px;}
-  .publication-filters .publication-search {flex:2 1 220px;}
-  .publication-filters input,.publication-filters select {width:100%;padding:8px;border:1px solid #bbb;border-radius:4px;background:#fff;color:#222;min-height:40px;}
-  .publication-filters button {min-height:40px;border-radius:4px;}
+  .publication-keywords {display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 8px;}
   .publication-tags {display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 16px;}
   .publication-tag {font-size:12px;padding:3px 8px;background:#eef3fa;color:#315f9c;border-radius:12px;}
+  button.publication-tag {font-family:inherit;border:1px solid transparent;cursor:pointer;}
+  .publication-keywords .publication-tag {font-size:14px;padding:6px 12px;}
+  button.publication-tag:hover {background:#dce7f6;}
+  button.publication-tag[aria-pressed="true"] {background:#315f9c;color:#fff;}
+  button.publication-tag:focus-visible {outline:2px solid #315f9c;outline-offset:3px;}
   </style>
 
   <link rel="icon" type="image/png" href="images/icon.png">
@@ -304,23 +305,13 @@
       Below are selected publications, including recent collaborations in biomedical engineering and medical robotics.
       A complete list of my publications can be found on my <a href="https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en">Google Scholar</a> page.
     </p>
-    <div class="publication-filters" id="publication-filters" hidden>
-      <label class="publication-search" for="publication-search">Search papers
-        <input id="publication-search" type="search" placeholder="Title, author, or keyword">
-      </label>
-      <label for="publication-topic">Research field
-        <select id="publication-topic"><option value="">All fields</option></select>
-      </label>
-      <label for="publication-year">Year
-        <select id="publication-year"><option value="">All years</option></select>
-      </label>
-      <label for="publication-venue">Venue
-        <select id="publication-venue"><option value="">All venues</option></select>
-      </label>
-      <button id="publication-reset" type="button" class="w3-button w3-light-grey">Clear filters</button>
+    <div class="publication-keywords" id="publication-keywords" role="group" aria-label="Browse papers by keyword" hidden>
+      <button type="button" class="publication-tag" data-topic="" aria-pressed="true">All papers</button>
+      <button type="button" class="publication-tag" data-topic="Robotics" aria-pressed="false">Robotics</button>
+      <button type="button" class="publication-tag" data-topic="Computer Vision" aria-pressed="false">Computer Vision</button>
+      <button type="button" class="publication-tag" data-topic="Medical Imaging" aria-pressed="false">Medical Imaging</button>
     </div>
     <p id="publication-count" class="w3-small" role="status" hidden></p>
-    <p id="publication-empty" hidden>No papers match these filters. Try another keyword or clear the filters.</p>
     <div class="publication-group">
     <h4> Conference Papers:</h4>
 
@@ -526,53 +517,46 @@ function w3_close() {
   document.getElementById("myOverlay").style.display = "none";
 }
 
-// Combine publication filters while retaining the conference/journal grouping.
+// Click a research keyword to filter; click it again to show all papers.
 (function () {
   const section = document.getElementById('publications');
   const papers = Array.from(section.querySelectorAll('.publication-group li'));
-  const search = document.getElementById('publication-search');
-  const topic = document.getElementById('publication-topic');
-  const year = document.getElementById('publication-year');
-  const venue = document.getElementById('publication-venue');
   const count = document.getElementById('publication-count');
-  const empty = document.getElementById('publication-empty');
+  let selectedTopic = '';
 
-  function addOptions(select, values) {
-    values.forEach(value => select.add(new Option(value, value)));
-  }
-  addOptions(topic, [...new Set(papers.flatMap(paper => paper.dataset.topics.split('|')))].sort());
-  addOptions(year, [...new Set(papers.map(paper => paper.dataset.year))].sort().reverse());
-  addOptions(venue, [...new Set(papers.map(paper => paper.dataset.venue))].sort());
+  section.querySelectorAll('.publication-tags .publication-tag').forEach(tag => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = tag.className;
+    button.textContent = tag.textContent;
+    button.dataset.topic = tag.textContent;
+    button.setAttribute('aria-pressed', 'false');
+    tag.replaceWith(button);
+  });
+  const buttons = Array.from(section.querySelectorAll('button[data-topic]'));
 
-  function filterPapers() {
-    const words = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  function showPapers() {
     let visible = 0;
     papers.forEach(paper => {
-      const text = (paper.textContent + ' ' + paper.dataset.topics + ' ' + paper.dataset.venue + ' ' + (paper.dataset.keywords || '')).toLowerCase();
-      const matches = words.every(word => text.includes(word)) &&
-        (!topic.value || paper.dataset.topics.split('|').includes(topic.value)) &&
-        (!year.value || paper.dataset.year === year.value) &&
-        (!venue.value || paper.dataset.venue === venue.value);
-      paper.hidden = !matches;
-      if (matches) visible++;
+      paper.hidden = selectedTopic !== '' && !paper.dataset.topics.split('|').includes(selectedTopic);
+      if (!paper.hidden) visible++;
     });
     section.querySelectorAll('.publication-group').forEach(group => {
       group.hidden = !Array.from(group.querySelectorAll('li')).some(paper => !paper.hidden);
     });
-    count.textContent = 'Showing ' + visible + ' of ' + papers.length + ' papers';
-    empty.hidden = visible > 0;
+    buttons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.topic === selectedTopic));
+    });
+    count.textContent = selectedTopic ? visible + ' papers · ' + selectedTopic : '';
   }
 
-  search.addEventListener('input', filterPapers);
-  [topic, year, venue].forEach(select => select.addEventListener('change', filterPapers));
-  document.getElementById('publication-reset').addEventListener('click', () => {
-    [search, topic, year, venue].forEach(control => { control.value = ''; });
-    filterPapers();
-    search.focus();
-  });
-  document.getElementById('publication-filters').hidden = false;
+  buttons.forEach(button => button.addEventListener('click', () => {
+    selectedTopic = button.dataset.topic === selectedTopic ? '' : button.dataset.topic;
+    showPapers();
+  }));
+  document.getElementById('publication-keywords').hidden = false;
   count.hidden = false;
-  filterPapers();
+  showPapers();
 })();
 </script>
 
