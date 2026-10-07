@@ -122,7 +122,6 @@ venue_names = {
     'ICRA': 'IEEE International Conference on Robotics and Automation (ICRA)',
     'IEEE TNSRE': 'IEEE Transactions on Neural Systems and Rehabilitation Engineering',
     'IEEE TMRB': 'IEEE Transactions on Medical Robotics and Bionics',
-    'IJCARS': 'International Journal of Computer Assisted Radiology and Surgery',
 }
 selected = [item for item in publications if item[1] in venue_names]
 selected.sort(key=lambda item: int(item[0]), reverse=True)
