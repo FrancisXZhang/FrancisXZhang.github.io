@@ -12,22 +12,23 @@ from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (
-    HRFlowable, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer,
+    HRFlowable, KeepTogether, Paragraph, SimpleDocTemplate, Spacer,
     Table, TableStyle,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'files' / 'Francis_Xiatian_Zhang_CV.pdf'
 OUTPUT.parent.mkdir(exist_ok=True)
-WIDTH = A4[0] - 144
+SIDE_MARGIN = 40
+WIDTH = A4[0] - 2 * SIDE_MARGIN
 LINK_COLOUR = '#c00083'
 styles = {
-    'name': ParagraphStyle('name', fontName='Times-Roman', fontSize=19, leading=24, alignment=TA_CENTER, spaceAfter=8),
+    'name': ParagraphStyle('name', fontName='Times-Roman', fontSize=19, leading=23, alignment=TA_CENTER, spaceAfter=5),
     'contact': ParagraphStyle('contact', fontName='Times-Roman', fontSize=10, leading=12, alignment=TA_CENTER),
-    'body': ParagraphStyle('body', fontName='Times-Roman', fontSize=10.3, leading=12.1, spaceAfter=3),
-    'section': ParagraphStyle('section', fontName='Times-Bold', fontSize=12, leading=15, spaceBefore=9, spaceAfter=3, keepWithNext=True),
+    'body': ParagraphStyle('body', fontName='Times-Roman', fontSize=10.3, leading=12.1, spaceAfter=2),
+    'section': ParagraphStyle('section', fontName='Times-Bold', fontSize=12, leading=14, spaceBefore=5, spaceAfter=2, keepWithNext=True),
     'bullet': ParagraphStyle('bullet', fontName='Times-Roman', fontSize=10.3, leading=12.1, leftIndent=11, firstLineIndent=0, bulletIndent=0, spaceAfter=2),
-    'publication': ParagraphStyle('publication', fontName='Times-Roman', fontSize=9.7, leading=11.5, leftIndent=10, bulletIndent=0, spaceAfter=6),
+    'publication': ParagraphStyle('publication', fontName='Times-Roman', fontSize=9.7, leading=11.5, leftIndent=10, bulletIndent=0, spaceAfter=4),
     'date': ParagraphStyle('date', fontName='Times-Italic', fontSize=10.3, leading=12.1, alignment=2),
 }
 
@@ -41,7 +42,9 @@ def link(url, label):
 
 
 def heading(title):
-    return [p(title, 'section'), HRFlowable(width='100%', thickness=0.5, color=colors.black, spaceAfter=4)]
+    rule = HRFlowable(width='100%', thickness=0.5, color=colors.black, spaceAfter=2)
+    rule.keepWithNext = True
+    return [p(title, 'section'), rule]
 
 
 def entry(title, date, details=(), italic=False):
@@ -54,13 +57,13 @@ def entry(title, date, details=(), italic=False):
         ('TOPPADDING', (0, 0), (-1, -1), 0),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
     ]))
-    return KeepTogether([row] + [p(text, 'bullet', True) for text in details] + [Spacer(1, 3)])
+    return KeepTogether([row] + [p(text, 'bullet', True) for text in details] + [Spacer(1, 2)])
 
 
 def page_number(canvas, doc):
     canvas.saveState()
     canvas.setFont('Times-Roman', 10)
-    canvas.drawCentredString(A4[0] / 2, 28, str(doc.page))
+    canvas.drawCentredString(A4[0] / 2, 18, str(doc.page))
     canvas.restoreState()
 
 
@@ -107,7 +110,6 @@ story = [
     *heading('Awards'),
     p('<b>2026:</b> ICRA Best Paper Award in Medical Robotics, for ' + link('https://arxiv.org/abs/2607.05162', 'Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion') + ' (co-author).'),
     p('<b>2020:</b> Dean’s List Award for Outstanding Achievement, University of Southampton.'),
-    PageBreak(),
     *heading('Main Publications'),
     p('Selected publications in robotics, computer vision, and biomedical engineering. Full list: ' +
       link('https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en', 'Google Scholar') + '.'),
@@ -137,7 +139,6 @@ for year, venue, content in selected:
     story.append(KeepTogether([p(citation, 'publication', True)]))
 
 story += [
-    PageBreak(),
     *heading('Skills'),
     p('<b>Programming:</b> Python, MATLAB, and R; PyTorch and TensorFlow.', 'bullet', True),
     p('<b>Computer vision:</b> Depth estimation, visual odometry, segmentation, pose estimation, video analysis, and graph-based modelling.', 'bullet', True),
@@ -156,7 +157,7 @@ story += [
 ]
 
 SimpleDocTemplate(
-    str(OUTPUT), pagesize=A4, leftMargin=72, rightMargin=72, topMargin=47, bottomMargin=43,
+    str(OUTPUT), pagesize=A4, leftMargin=SIDE_MARGIN, rightMargin=SIDE_MARGIN, topMargin=30, bottomMargin=30,
     title='Francis Xiatian Zhang — Curriculum Vitae', author='Francis Xiatian Zhang',
     subject='Robot vision, medical robotics, and computer vision', pageCompression=1,
 ).build(story, onFirstPage=page_number, onLaterPages=page_number)
