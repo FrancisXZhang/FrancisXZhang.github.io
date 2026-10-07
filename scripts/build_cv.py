@@ -150,7 +150,7 @@ story += [
     p('Towards Graph Representation Learning-Based Surgical Workflow Anticipation. <i>IEEE-EMBS BHI 2022</i>, Ioannina, Greece.', 'bullet', True),
     *heading('Service'),
     p('<b>Research Champion, National Institute for Health and Care Research (NIHR).</b> Appointed December 2023. Contributions to inclusive trial recruitment and discussions of AI-assisted, privacy-preserving recruitment.'),
-    p('<b>Peer review:</b> IEEE International Symposium on Biomedical Imaging (ISBI) and IEEE Transactions on Neural Systems and Rehabilitation Engineering (TNSRE).'),
+    p('<b>Peer review:</b> International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI); IEEE International Conference on Robotics and Automation (ICRA); IEEE International Symposium on Biomedical Imaging (ISBI); IEEE Transactions on Image Processing (TIP); IEEE Robotics and Automation Letters (RA-L); IEEE Transactions on Medical Imaging (TMI); and IEEE Transactions on Neural Systems and Rehabilitation Engineering (TNSRE).'),
     *heading('Training'),
     p('<b>BMVA Computer Vision Summer School 2022</b>, University of East Anglia, UK, July 2022. Computer vision lectures and laboratory sessions.', 'bullet', True),
     p('<b>Clinical Clerkship</b>, Dongfang Hospital, Beijing University of Chinese Medicine, China, July 2018 – June 2019. Supervised experience in outpatient and inpatient departments.', 'bullet', True),
