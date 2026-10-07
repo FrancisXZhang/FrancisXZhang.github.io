@@ -139,9 +139,6 @@ for year, venue, content in selected:
 
 story += [
     PageBreak(),
-    *heading('Earlier Publications'),
-    p('<b>Francis Xiatian Zhang</b>, Sisi Zheng, Hubert P. H. Shum, Haozheng Zhang, Nan Song, Mingkang Song and Hongxiao Jia (2023). Correlation-Distance Graph Learning for Treatment Response Prediction from rs-fMRI. <i>International Conference on Neural Information Processing (ICONIP)</i>, pp. 298–312. ' + link('https://doi.org/10.1007/978-981-99-8138-0_24', 'paper') + '.', 'publication', True),
-    p('<b>Francis Xiatian Zhang</b>, Noura Al Moubayed and Hubert P. H. Shum (2022). Towards Graph Representation Learning Based Surgical Workflow Anticipation. <i>IEEE-EMBS International Conference on Biomedical and Health Informatics (BHI)</i>, pp. 1–4. ' + link('https://doi.org/10.1109/BHI56158.2022.9926801', 'paper') + '.', 'publication', True),
     *heading('Skills'),
     p('<b>Programming:</b> Python, MATLAB, and R; PyTorch and TensorFlow.', 'bullet', True),
     p('<b>Computer vision:</b> Depth estimation, visual odometry, segmentation, pose estimation, video analysis, and graph-based modelling.', 'bullet', True),
@@ -157,8 +154,6 @@ story += [
     *heading('Training'),
     p('<b>BMVA Computer Vision Summer School 2022</b>, University of East Anglia, UK, July 2022. Computer vision lectures and laboratory sessions.', 'bullet', True),
     p('<b>Clinical Clerkship</b>, Dongfang Hospital, Beijing University of Chinese Medicine, China, July 2018 – June 2019. Supervised experience in outpatient and inpatient departments.', 'bullet', True),
-    *heading('References'),
-    p('Available on request.'),
 ]
 
 SimpleDocTemplate(
