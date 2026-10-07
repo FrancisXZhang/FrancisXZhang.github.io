@@ -1,165 +1,169 @@
-"""Build the public CV: python3 scripts/build_cv.py (requires reportlab)."""
+"""Build the public CV: python3 scripts/build_cv.py (requires reportlab).
 
+Layout follows FrancisXZhang_NIW_CV.pdf. Education, skills, talks, service,
+and training use that supplied CV; recent publications come from index.html.
+"""
 from html import escape, unescape
 from pathlib import Path
 import re
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
-    KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle,
+    HRFlowable, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer,
+    Table, TableStyle,
 )
 
-
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "files" / "Francis_Xiatian_Zhang_CV.pdf"
+OUTPUT = ROOT / 'files' / 'Francis_Xiatian_Zhang_CV.pdf'
 OUTPUT.parent.mkdir(exist_ok=True)
-FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
-for name, filename in [
-    ("CV", "DejaVuSans.ttf"),
-    ("CV-Bold", "DejaVuSans-Bold.ttf"),
-    ("CV-Italic", "DejaVuSans-Oblique.ttf"),
-]:
-    pdfmetrics.registerFont(TTFont(name, str(FONT_DIR / filename)))
-pdfmetrics.registerFontFamily("CV", normal="CV", bold="CV-Bold", italic="CV-Italic", boldItalic="CV-Bold")
-
-NAVY = colors.HexColor("#203b58")
-BLUE = colors.HexColor("#315f9c")
-GREY = colors.HexColor("#596570")
-BODY = colors.HexColor("#26323c")
+WIDTH = A4[0] - 144
+LINK_COLOUR = '#c00083'
 styles = {
-    "name": ParagraphStyle("name", fontName="CV-Bold", fontSize=23, leading=28, textColor=NAVY),
-    "subtitle": ParagraphStyle("subtitle", fontName="CV", fontSize=11, leading=16, textColor=GREY),
-    "body": ParagraphStyle("body", fontName="CV", fontSize=9.5, leading=13.4, textColor=BODY, spaceAfter=5),
-    "small": ParagraphStyle("small", fontName="CV", fontSize=8.5, leading=12, textColor=GREY, spaceAfter=4),
-    "section": ParagraphStyle("section", fontName="CV-Bold", fontSize=11.5, leading=16, textColor=NAVY, spaceBefore=12, spaceAfter=7, keepWithNext=True),
-    "publication": ParagraphStyle("publication", fontName="CV", fontSize=9, leading=12.3, textColor=BODY, spaceAfter=7),
-    "date": ParagraphStyle("date", fontName="CV", fontSize=8.5, leading=12.5, textColor=GREY, alignment=TA_LEFT),
+    'name': ParagraphStyle('name', fontName='Times-Roman', fontSize=19, leading=24, alignment=TA_CENTER, spaceAfter=8),
+    'contact': ParagraphStyle('contact', fontName='Times-Roman', fontSize=10, leading=12, alignment=TA_CENTER),
+    'body': ParagraphStyle('body', fontName='Times-Roman', fontSize=10.3, leading=12.1, spaceAfter=3),
+    'section': ParagraphStyle('section', fontName='Times-Bold', fontSize=12, leading=15, spaceBefore=9, spaceAfter=3, keepWithNext=True),
+    'bullet': ParagraphStyle('bullet', fontName='Times-Roman', fontSize=10.3, leading=12.1, leftIndent=11, firstLineIndent=0, bulletIndent=0, spaceAfter=2),
+    'publication': ParagraphStyle('publication', fontName='Times-Roman', fontSize=9.7, leading=11.5, leftIndent=10, bulletIndent=0, spaceAfter=6),
+    'date': ParagraphStyle('date', fontName='Times-Italic', fontSize=10.3, leading=12.1, alignment=2),
 }
 
 
-def paragraph(text, style="body"):
-    return Paragraph(text, styles[style])
+def p(text, style='body', bullet=False):
+    return Paragraph(text, styles[style], bulletText='•' if bullet else None)
 
 
 def link(url, label):
-    return f'<a href="{escape(url, quote=True)}" color="#315f9c">{escape(label)}</a>'
+    return f'<a href="{escape(url, quote=True)}" color="{LINK_COLOUR}">{escape(label)}</a>'
 
 
-def section(title):
-    return paragraph(title, "section")
+def heading(title):
+    return [p(title, 'section'), HRFlowable(width='100%', thickness=0.5, color=colors.black, spaceAfter=4)]
 
 
-def entry(date, title, detail=""):
-    content = f"<b>{title}</b>" + (f"<br/>{detail}" if detail else "")
-    table = Table([[paragraph(date, "date"), paragraph(content)]], colWidths=[91, 420])
-    table.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 8),
-        ("TOPPADDING", (0, 0), (-1, -1), 1),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+def entry(title, date, details=(), italic=False):
+    tag = 'i' if italic else 'b'
+    row = Table([[p(f'<{tag}>{title}</{tag}>'), p(date, 'date')]], colWidths=[WIDTH * .67, WIDTH * .33])
+    row.setStyle(TableStyle([
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('LEFTPADDING', (0, 0), (-1, -1), 0),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 0),
+        ('TOPPADDING', (0, 0), (-1, -1), 0),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
     ]))
-    return table
+    return KeepTogether([row] + [p(text, 'bullet', True) for text in details] + [Spacer(1, 3)])
 
 
-def footer(canvas, doc):
+def page_number(canvas, doc):
     canvas.saveState()
-    width, _ = A4
-    canvas.setStrokeColor(colors.HexColor("#d9e0e7"))
-    canvas.line(42, 38, width - 42, 38)
-    canvas.setFont("CV", 7.5)
-    canvas.setFillColor(GREY)
-    canvas.drawString(42, 25, "Francis Xiatian Zhang | Updated October 2026")
-    canvas.drawRightString(width - 42, 25, f"{doc.page}")
-    if doc.page > 1:
-        canvas.drawString(42, A4[1] - 27, "Francis Xiatian Zhang | Curriculum Vitae")
+    canvas.setFont('Times-Roman', 10)
+    canvas.drawCentredString(A4[0] / 2, 28, str(doc.page))
     canvas.restoreState()
 
 
 story = [
-    paragraph("Francis Xiatian Zhang, PhD", "name"),
-    paragraph("Robot Vision · Medical Robotics · Computer Vision", "subtitle"),
-    Spacer(1, 8),
-    paragraph(
-        link("mailto:francis.zhang@ed.ac.uk", "francis.zhang@ed.ac.uk") + " · " +
-        link("mailto:francis.xiatian.zhang@outlook.com", "francis.xiatian.zhang@outlook.com"), "small"
-    ),
-    paragraph(
-        link("https://francisxzhang.github.io/", "Website") + " · " +
-        link("https://github.com/FrancisXZhang", "GitHub") + " · " +
-        link("https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en", "Google Scholar") + " · " +
-        link("https://www.linkedin.com/in/francis-xiatian-zhang/", "LinkedIn"), "small"
-    ),
-    section("Research Profile"),
-    paragraph(
-        "Research Associate at the University of Edinburgh working on robot vision for medical robotics. "
-        "Research combines geometric modelling and deep learning for robotic bronchoscopy, with an emphasis "
-        "on depth estimation, visual odometry, airway segmentation, and reliable visual navigation."
-    ),
-    section("Research and Teaching Experience"),
-    entry("Nov 2024–present", "Research Associate · University of Edinburgh",
-          "Develops visual navigation and perception systems for robotic bronchoscopy, including airway "
-          "segmentation, geometric graph construction, and failure diagnosis. PI: Dr Mohsen Khadem."),
-    entry("Oct–Nov 2023;<br/>Jul–Sep 2024", "Research Assistant · Durham University",
-          "Contributed to the Edge Computing and Analytics 2.0 course, teaching model training, ONNX export, "
-          "and deployment through Python APIs. PI: Dr Anish Jindal."),
-    entry("Nov 2021–Jun 2024", "Demonstrator · Durham University",
-          "Supported laboratory teaching in Computational Thinking, Data Science, Programming for Data "
-          "Science, and Text Mining."),
-    entry("Apr–Jul 2022", "Research Assistant · Northumbria University",
-          "Developed multi-camera data collection and pose-based models for automatic assessment of CPR "
-          "skills in nursing simulation. PI: Dr Merryn Constable."),
-    section("Education"),
-    entry("2025", "PhD · Durham University", "Geometric representations for clinical video analysis."),
-    entry("", "MRes · King's College London"),
-    entry("", "MSc · University of Southampton"),
-    entry("", "Bachelor's degree · Beijing University of Chinese Medicine"),
-    section("Awards"),
-    entry("2026", "ICRA Best Paper Award in Medical Robotics",
-          "Co-author of " + link("https://arxiv.org/abs/2607.05162",
-          "Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion") + "."),
-    entry("2020", "Dean's List Award for Outstanding Achievement", "University of Southampton."),
+    p('Francis Xiatian Zhang', 'name'),
+    p('Email: ' + link('mailto:francis.zhang@ed.ac.uk', 'francis.zhang@ed.ac.uk') + ' | ' +
+      link('mailto:francis.xiatian.zhang@outlook.com', 'francis.xiatian.zhang@outlook.com'), 'contact'),
+    p('Personal Website: ' + link('https://francisxzhang.github.io/', 'francisxzhang.github.io'), 'contact'),
+    p('LinkedIn: ' + link('https://www.linkedin.com/in/francis-xiatian-zhang/', 'linkedin.com/in/francis-xiatian-zhang'), 'contact'),
+    p('Google Scholar: ' + link('https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en', 'scholar.google.com/citations?user=R04bvhAAAAAJ') +
+      ' | ' + link('https://github.com/FrancisXZhang', 'GitHub'), 'contact'),
+    Spacer(1, 3),
+    *heading('Education'),
+    entry('Durham University, UK', 'Oct. 2021 – May 2025', [
+        'PhD in Computer Science. Research: geometric representations for clinical video analysis, surgical workflow anticipation, and endoscopic video understanding.',
+        'Supervisors: Dr Hubert P. H. Shum and Dr Noura Al Moubayed.',
+    ], italic=True),
+    entry("King’s College London, UK", 'Sep. 2020 – Sep. 2021', [
+        'MRes in Healthcare Technologies — Distinction.',
+        'Project: Extracting Novel Cardiovascular Risk Factors from Routine CT Volumes.',
+    ], italic=True),
+    entry('University of Southampton, UK', 'Sep. 2019 – Sep. 2020', [
+        'MSc in Statistics with Applications in Medicine — Distinction.',
+    ], italic=True),
+    entry('Beijing University of Chinese Medicine, China', 'Sep. 2014 – Jul. 2019', [
+        'Bachelor of Medicine — Upper Second-Class Honours.',
+    ], italic=True),
+    *heading('Research Statement'),
+    p('I work on robot vision, particularly perception and navigation for robotic bronchoscopy. My current research combines geometric modelling and deep learning for depth estimation, visual odometry, and airway segmentation. I am interested in how robots recover 3D structure and motion from images, and how this information can support reliable navigation in challenging environments.'),
+    *heading('Relevant Experience'),
+    entry('Research Associate, University of Edinburgh, UK', 'Nov. 2024 – Present', [
+        'Robot vision for bronchoscopic navigation: depth estimation, airway segmentation, visual odometry, and failure diagnosis. PI: Dr Mohsen Khadem.',
+        'Collaborative work on continuum robot simulation and objective bronchoscopy skill assessment.',
+    ]),
+    entry('Research Assistant, Durham University, UK', 'Oct.–Nov. 2023;<br/>Jul.–Sep. 2024', [
+        'Edge Computing and Analytics 2.0: teaching model training, ONNX export, and deployment through Python APIs. PI: Dr Anish Jindal.',
+    ]),
+    entry('Demonstrator, Durham University, UK', 'Nov. 2021 – Jun. 2024', [
+        'Laboratory teaching in robotics, data science, programming, and text mining; instruction with Python, MATLAB, NVIDIA Jetson, and Puzzlebot.',
+    ]),
+    entry('Research Assistant, Northumbria University, UK', 'Apr. 2022 – Jul. 2022', [
+        'Pose-based assessment of CPR skills; multi-camera data collection with nursing students and staff. PI: Dr Merryn Constable.',
+    ]),
+    *heading('Awards'),
+    p('<b>2026:</b> ICRA Best Paper Award in Medical Robotics, for ' + link('https://arxiv.org/abs/2607.05162', 'Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion') + ' (co-author).'),
+    p('<b>2020:</b> Dean’s List Award for Outstanding Achievement, University of Southampton.'),
     PageBreak(),
-    section("Selected Publications"),
-    paragraph("Selected work in robotics, computer vision, and biomedical engineering. Full publication list: " +
-              link("https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en", "Google Scholar") + ".", "small"),
+    *heading('Main Publications'),
+    p('Selected publications in robotics, computer vision, and biomedical engineering. Full list: ' +
+      link('https://scholar.google.com/citations?user=R04bvhAAAAAJ&hl=en', 'Google Scholar') + '.'),
 ]
 
-# Pull titles, authors, years, and verified links from the website to avoid duplicate metadata.
-html = (ROOT / "index.html").read_text()
+html = (ROOT / 'index.html').read_text()
 research = html.split('id="publications">', 1)[1].split('<!-- The Awards Section -->', 1)[0]
 publications = re.findall(r'<li data-year="(\d+)" data-venue="([^"]+)"[^>]*>(.*?)</li>', research, re.S)
-assert len(publications) == 13, "Review publication extraction after editing the website structure."
-number = 0
-for year, venue, content in publications:
-    if venue in {"BMC Psychiatry", "Advances in Health Sciences Education"}:
-        continue
-    title = unescape(re.search(r"<strong>(.*?)</strong>", content, re.S).group(1))
-    authors = unescape(re.sub(r"<[^>]+>", "", re.split(r"<br\s*/?>", content)[1])).strip()
-    authors = escape(authors).replace("Francis Xiatian Zhang", "<b>Francis Xiatian Zhang</b>")
+assert len(publications) == 13, 'Review extraction after changing the website structure.'
+venue_names = {
+    'MICCAI': 'International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)',
+    'ICRA': 'IEEE International Conference on Robotics and Automation (ICRA)',
+    'IEEE TNSRE': 'IEEE Transactions on Neural Systems and Rehabilitation Engineering',
+    'IEEE TMRB': 'IEEE Transactions on Medical Robotics and Bionics',
+    'IJCARS': 'International Journal of Computer Assisted Radiology and Surgery',
+}
+selected = [item for item in publications if item[1] in venue_names]
+selected.sort(key=lambda item: int(item[0]), reverse=True)
+for year, venue, content in selected:
+    title = unescape(re.search(r'<strong>(.*?)</strong>', content, re.S).group(1))
+    authors = unescape(re.sub(r'<[^>]+>', '', re.split(r'<br\s*/?>', content)[1])).strip()
+    authors = escape(authors).replace('Francis Xiatian Zhang', '<b>Francis Xiatian Zhang</b>')
     links = re.findall(r'<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>', content, re.S)
-    resources = " · ".join(link(unescape(url), unescape(label)) for url, label in links)
-    number += 1
-    item = (
-        f"<b>{number}. {escape(title)}</b><br/>"
-        f"{authors}<br/>"
-        f'<font color="#596570">{escape(venue)} {year}</font> · {resources}'
-    )
-    if title.startswith("Geometry-Aware Visual Odometry"):
-        item += '<br/><font color="#315f9c">Best Paper Award in Medical Robotics, ICRA 2026</font>'
-    story.append(KeepTogether([paragraph(item, "publication")]))
-assert number == 11
+    resources = ' | '.join(link(unescape(url), unescape(label)) for url, label in links)
+    citation = f'{authors} ({year}). {escape(title)}. <i>{venue_names[venue]}</i>. {resources}.'
+    if title.startswith('Geometry-Aware Visual Odometry'):
+        citation += ' <b>Best Paper Award in Medical Robotics.</b>'
+    story.append(KeepTogether([p(citation, 'publication', True)]))
 
-doc = SimpleDocTemplate(
-    str(OUTPUT), pagesize=A4,
-    rightMargin=42, leftMargin=42, topMargin=43, bottomMargin=49,
-    title="Francis Xiatian Zhang — Curriculum Vitae", author="Francis Xiatian Zhang",
-    subject="Robot vision, medical robotics, and computer vision", pageCompression=1,
-)
-doc.build(story, onFirstPage=footer, onLaterPages=footer)
+story += [
+    PageBreak(),
+    *heading('Earlier Publications'),
+    p('<b>Francis Xiatian Zhang</b>, Sisi Zheng, Hubert P. H. Shum, Haozheng Zhang, Nan Song, Mingkang Song and Hongxiao Jia (2023). Correlation-Distance Graph Learning for Treatment Response Prediction from rs-fMRI. <i>International Conference on Neural Information Processing (ICONIP)</i>, pp. 298–312. ' + link('https://doi.org/10.1007/978-981-99-8138-0_24', 'paper') + '.', 'publication', True),
+    p('<b>Francis Xiatian Zhang</b>, Noura Al Moubayed and Hubert P. H. Shum (2022). Towards Graph Representation Learning Based Surgical Workflow Anticipation. <i>IEEE-EMBS International Conference on Biomedical and Health Informatics (BHI)</i>, pp. 1–4. ' + link('https://doi.org/10.1109/BHI56158.2022.9926801', 'paper') + '.', 'publication', True),
+    *heading('Skills'),
+    p('<b>Programming:</b> Python, MATLAB, and R; PyTorch and TensorFlow.', 'bullet', True),
+    p('<b>Computer vision:</b> Depth estimation, visual odometry, segmentation, pose estimation, video analysis, and graph-based modelling.', 'bullet', True),
+    p('<b>Medical imaging:</b> CT, MRI, and fMRI processing; SPM12 and FreeSurfer.', 'bullet', True),
+    p('<b>Statistical modelling:</b> Bayesian statistics, general linear models, survival analysis, and clinical trial design.', 'bullet', True),
+    *heading('Talks and Conference Presentations'),
+    p('Application of Graph Network Analysis in the Interpretation of Medical Data and Support of Clinical Decision-Making. <i>Beijing Integrated Medicine Committee Annual Conference, Psychiatry Workshop</i>, Beijing, China, November 2023.', 'bullet', True),
+    p('Correlation-Distance Graph Learning for Treatment Response Prediction from rs-fMRI. <i>ICONIP 2023</i>, Hunan, China.', 'bullet', True),
+    p('Towards Graph Representation Learning-Based Surgical Workflow Anticipation. <i>IEEE-EMBS BHI 2022</i>, Ioannina, Greece.', 'bullet', True),
+    *heading('Service'),
+    p('<b>Research Champion, National Institute for Health and Care Research (NIHR).</b> Appointed December 2023. Contributions to inclusive trial recruitment and discussions of AI-assisted, privacy-preserving recruitment.'),
+    p('<b>Peer review:</b> IEEE International Symposium on Biomedical Imaging (ISBI) and IEEE Transactions on Neural Systems and Rehabilitation Engineering (TNSRE).'),
+    *heading('Training'),
+    p('<b>BMVA Computer Vision Summer School 2022</b>, University of East Anglia, UK, July 2022. Computer vision lectures and laboratory sessions.', 'bullet', True),
+    p('<b>Clinical Clerkship</b>, Dongfang Hospital, Beijing University of Chinese Medicine, China, July 2018 – June 2019. Supervised experience in outpatient and inpatient departments.', 'bullet', True),
+    *heading('References'),
+    p('Available on request.'),
+]
+
+SimpleDocTemplate(
+    str(OUTPUT), pagesize=A4, leftMargin=72, rightMargin=72, topMargin=47, bottomMargin=43,
+    title='Francis Xiatian Zhang — Curriculum Vitae', author='Francis Xiatian Zhang',
+    subject='Robot vision, medical robotics, and computer vision', pageCompression=1,
+).build(story, onFirstPage=page_number, onLaterPages=page_number)
 print(OUTPUT)
