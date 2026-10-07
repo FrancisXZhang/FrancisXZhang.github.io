@@ -20,7 +20,9 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'files' / 'Francis_Xiatian_Zhang_CV.pdf'
 OUTPUT.parent.mkdir(exist_ok=True)
 SIDE_MARGIN = 40
-WIDTH = A4[0] - 2 * SIDE_MARGIN
+# SimpleDocTemplate's frame has 6 pt of inner padding on each side.
+FRAME_PADDING = 6
+WIDTH = A4[0] - 2 * (SIDE_MARGIN + FRAME_PADDING)
 LINK_COLOUR = '#c00083'
 styles = {
     'name': ParagraphStyle('name', fontName='Times-Roman', fontSize=19, leading=23, alignment=TA_CENTER, spaceAfter=5),
@@ -49,7 +51,7 @@ def heading(title):
 
 def entry(title, date, details=(), italic=False):
     tag = 'i' if italic else 'b'
-    row = Table([[p(f'<{tag}>{title}</{tag}>'), p(date, 'date')]], colWidths=[WIDTH * .67, WIDTH * .33])
+    row = Table([[p(f'<{tag}>{title}</{tag}>'), p(date, 'date')]], colWidths=[WIDTH * .67, WIDTH * .33], hAlign='LEFT')
     row.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
