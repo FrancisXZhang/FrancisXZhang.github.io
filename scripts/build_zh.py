@@ -12,9 +12,10 @@ SOURCE = ROOT / 'index.html'
 OUTPUT = ROOT / 'index-zh.html'
 
 TRANSLATIONS = [
-    ('<title>Francis Xiatian Zhang</title>', '<title>Francis Xiatian Zhang | 中文</title>'),
+    ('<title>Francis Xiatian Zhang</title>', '<title>张夏天 | Francis Xiatian Zhang</title>'),
+    ('<h1>Francis Xiatian Zhang</h1>', '<h1>张夏天（Francis Xiatian Zhang）</h1>'),
     ('Francis Xiatian Zhang, Research Associate at the University of Edinburgh, working on robot vision, 3D perception, and visual navigation.',
-     'Francis Xiatian Zhang，爱丁堡大学研究员，研究方向为机器人视觉、三维感知与视觉导航。'),
+     '张夏天（Francis Xiatian Zhang），爱丁堡大学研究员，研究方向为机器人视觉、三维感知与视觉导航。'),
     ('aria-label="Website language"', 'aria-label="网站语言"'),
     ('>Home</a>', '>首页</a>'),
     ('>News</a>', '>动态</a>'),
