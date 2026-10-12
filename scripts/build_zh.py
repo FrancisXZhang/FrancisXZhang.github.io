@@ -40,7 +40,6 @@ TRANSLATIONS = [
     ('— accepted at <strong>MICCAI 2026</strong>.', '——被 <strong>MICCAI 2026</strong> 接收。'),
     ('— accepted.', '——已接收。'),
     ('Three papers at <strong>ICRA</strong> —', '三篇论文被 <strong>ICRA</strong> 接收：'),
-    ('(preprint soon)', '（预印本即将发布）'),
     ('Two papers at <strong>MICCAI 2025</strong> —', '两篇论文被 <strong>MICCAI 2025</strong> 接收：'),
     ('(accepted)', '（已接收）'),
     ('(early accepted)', '（提前接收）'),
@@ -162,9 +161,9 @@ def build():
     page = page.replace('* = co-first author.', '* 表示共同第一作者。')
     # Localize connecting words and punctuation around the English news titles.
     for english, chinese in [
-        ('</a>, <strong>A Model', '</a>、<strong>A Model'),
-        ('（预印本即将发布）, and <strong>', '（预印本即将发布），以及 <strong>'),
-        ('（预印本即将发布） ——已接收。', '（预印本即将发布）。'),
+        ('</a>, <a', '</a>、<a'),
+        ('</a>, and <a', '</a>，以及 <a'),
+        ('</a> ——已接收。', '</a>。'),
         ('（已接收） and <a', '（已接收），以及 <a'),
         ('</a> and <a', '</a> 和 <a'),
         ('（提前接收）.', '（提前接收）。'),
