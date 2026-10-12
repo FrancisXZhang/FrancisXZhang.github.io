@@ -22,6 +22,13 @@
   <style>
   .w3-sidebar a {font-family: "Roboto", sans-serif}
   body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+  /* Chinese glyphs fill more of the em square; balance their visual size. */
+  html[lang="zh-Hans"] body {font-size:14px;}
+  html[lang="zh-Hans"] h1 {font-size:34px;}
+  html[lang="zh-Hans"] h2 {font-size:28px;}
+  html[lang="zh-Hans"] .w3-sidebar .w3-bar-item {font-size:17px;}
+  html[lang="zh-Hans"] .publication-group[lang="en"] {font-size:15px;}
+  html[lang="zh-Hans"] .publication-group h4[lang="zh-Hans"] {font-size:19px;}
   .language-switch {font-size:14px;margin:0 0 20px;}
   .language-switch a {color:#447ec9;}
   .language-switch a[aria-current="page"] {color:inherit;font-weight:bold;text-decoration:none;}
