@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
 
@@ -9,16 +9,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="I am a research associate at the University of Edinburgh.">
+  <meta name="description" content="Francis Xiatian Zhang, Research Associate at the University of Edinburgh, working on robot vision, 3D perception, and visual navigation.">
   <meta name="keywords" content="Francis, Xia,Xia Zhang, Xiatian Zhang, Francis Zhang, Francis X Zhang, Francis Xiatian Zhang, Deep Learning, Computer, Vision, Biomedical, Engineering">
   <meta name="author" content="Francis Xiatian Zhang" />
   <meta name="google-site-verification" content="dHtoMJcd8xQhd_JwIINYFWo-oKWDFhzWhk7FVGH5DFE" />
 
   <link rel="stylesheet" href="w3.css">
+  <link rel="alternate" hreflang="en" href="https://francisxzhang.github.io/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://francisxzhang.github.io/index-zh.html">
 
   <style>
   .w3-sidebar a {font-family: "Roboto", sans-serif}
-  body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+  body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+  .language-switch {font-size:14px;margin:0 0 20px;}
+  .language-switch a {color:#447ec9;}
+  .language-switch a[aria-current="page"] {color:inherit;font-weight:bold;text-decoration:none;}
   .news-scroll {
     max-height: 320px;
     overflow-y: auto;
@@ -48,7 +53,7 @@
   </style>
 
   <link rel="icon" type="image/png" href="images/icon.png">
- 
+
   <!--
   <script src="jquery.min.js"></script>
   <script>
@@ -100,7 +105,6 @@
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
   <div class="w3-bar-item w3-padding-24">Francis</div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right"  style="font-stretch: extra-expanded;" onclick="w3_open()"><b>≡</b></a>
-  </div>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -116,15 +120,14 @@
     <div class="w3-container w3-center w3-padding-32" id="home">
       <img style="width: 50%; max-width: 200px" alt="profile photo" src="images/Xiatian_Portrait.jpg">
       <h1>Francis Xiatian Zhang</h1>
+      <nav class="language-switch" aria-label="Website language">
+        <a href="index.html" lang="en" hreflang="en" aria-current="page">English</a>
+        <span aria-hidden="true"> / </span>
+        <a href="index-zh.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </nav>
       <p class="w3-justify" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;max-width:600px">
-        I am a Research Associate at the University of Edinburgh working on robot vision. My research combines geometric modelling and deep learning for 3D perception, motion estimation, and visual navigation. My recent work includes depth estimation, visual odometry, and segmentation, with applications in medical robotics and bronchoscopic navigation.
+        I am a Research Associate at the University of Edinburgh working on robot vision, with interests in 3D perception, motion estimation, and visual navigation. My research combines geometric modelling and deep learning, with recent work on depth estimation, visual odometry, and segmentation for medical robotics and bronchoscopic navigation. I received my PhD from Durham University, where I studied geometric representations for clinical video analysis. More broadly, I am interested in how robots use visual information to understand their surroundings and navigate reliably, and I am open to research and engineering opportunities in robotic perception and applied computer vision.
       </p>
-      <p class="w3-justify" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;max-width:600px">
-        I received my PhD from Durham University, where I studied geometric representations for clinical video analysis.
-      </p>
-      <p class="w3-justify" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;max-width:600px">
-        I am interested in how robots use visual information to understand their surroundings and navigate reliably in challenging environments. I am open to research and engineering opportunities in robotic perception, visual navigation, and applied computer vision.
-      </p>      
         <p class="w3-center">
           <a href="files/Francis_Xiatian_Zhang_CV.pdf">CV (PDF)</a> &nbsp/&nbsp
           <a href="mailto:francis.xiatian.zhang@outlook.com">Email</a> &nbsp/&nbsp
@@ -176,7 +179,7 @@
       <a href="mailto:francis.xiatian.zhang@outlook.com">francis.xiatian.zhang@outlook.com</a> (primary) or
       <a href="mailto:francis.zhang@ed.ac.uk">francis.zhang@ed.ac.uk</a> (academic).
     </p>
-    
+
 
     <div class="w3-row-padding w3-margin-top">
       <div class="w3-third w3-margin-bottom">
@@ -258,24 +261,24 @@
 
     </div>
 
-<!-- 
+<!--
 <h4><li>The Graph Representation Learning for Surgical Workflow Anticipation</li></h4>
-<img style="width:96%;" src="images/SurgeryAnt_2022.png"> 
+<img style="width:96%;" src="images/SurgeryAnt_2022.png">
 <p class="w3-justify">
-  <a style="color: #447ec9" href="https://github.com/FrancisXZhang/GCN_Anticipation">Project Page</a> | 
+  <a style="color: #447ec9" href="https://github.com/FrancisXZhang/GCN_Anticipation">Project Page</a> |
   <a style="color: #447ec9" href="https://arxiv.org/abs/2208.03824">Paper</a>
 </p>
 <p class="w3-justify">
-  Surgical workflow anticipation, crucial for computer-assisted interventions like robotic surgery, predicts subsequent steps and instruments. 
-  Current methods lack expressive power for instrument relationships, 
-  so we propose a graph representation learning framework to robustly represent instrument motions. 
+  Surgical workflow anticipation, crucial for computer-assisted interventions like robotic surgery, predicts subsequent steps and instruments.
+  Current methods lack expressive power for instrument relationships,
+  so we propose a graph representation learning framework to robustly represent instrument motions.
   To the best of our knowledge, we are the first to introduce a spatial-temporal graph representation into surgical workflow anticipation.
 </p>
 -->
 
 
   </div>
-  
+
  <!-- The Publications Section -->
   <div class="w3-container w3-padding-32" id="publications">
     <h2>Research</h2>
@@ -292,7 +295,7 @@
       <button type="button" class="publication-tag" data-topic="Computer Vision" aria-pressed="false">Computer Vision</button>
       <button type="button" class="publication-tag" data-topic="Medical Imaging" aria-pressed="false">Medical Imaging</button>
     </div>
-    <p id="publication-count" class="w3-small" role="status" hidden></p>
+    <p id="publication-count" class="w3-small" role="status" data-template="{count} papers · {topic}" hidden></p>
     <div class="publication-group">
     <h4> Conference Papers:</h4>
 
@@ -347,8 +350,8 @@
       <br>
       Francis Xiatian Zhang, Emile Mackute, Mohammadreza Kasaei, Kevin Dhaliwal, Robert Thomson and Mohsen Khadem
       <br>
-      <em>MICCAI</em> 2025 | 
-      <a style="color: #447ec9" href="https://papers.miccai.org/miccai-2025/0118-Paper2574.html">paper</a> | 
+      <em>MICCAI</em> 2025 |
+      <a style="color: #447ec9" href="https://papers.miccai.org/miccai-2025/0118-Paper2574.html">paper</a> |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2509.11885">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/SIRGLab/BREA-Depth">code</a>
       <br>Contribution: Delivered an airway-aware depth estimation system that adapts foundation models via Depth-aware CycleGAN translation, airway structure losses, and Airway Depth Structure Evaluation metrics for bronchoscopy navigation.
@@ -358,8 +361,8 @@
       <br>
       Francis Xiatian Zhang, Shuang Chen, Xianghua Xie and Hubert P. H. Shum
       <br>
-      <em>MICCAI</em> 2024 | 
-      <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-72089-5_14">paper</a> | 
+      <em>MICCAI</em> 2024 |
+      <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-72089-5_14">paper</a> |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2407.02675">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/DAEVI">code</a>
       <br>Contribution: Built a depth-aware inpainting system that pairs Spatial-Temporal Guided Depth Estimation with bi-modal fusion and a depth-enhanced discriminator to recover occluded anatomy.
@@ -369,8 +372,8 @@
       <br>
       Haozheng Zhang, Edmond S. L. Ho, Francis Xiatian Zhang and Hubert P. H. Shum
       <br>
-      <em>MICCAI</em> 2022 | 
-      <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-16440-8_47">paper</a> | 
+      <em>MICCAI</em> 2022 |
+      <a style="color: #447ec9" href="https://link.springer.com/chapter/10.1007/978-3-031-16440-8_47">paper</a> |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2207.06828">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/mattz10966/SPAPNet">code</a>
       <br>Contribution: Led dataset curation and clinical alignment for a pose-based tremor analysis system, ensuring label validity, evaluation protocol design, and meaningful clinical interpretation.
@@ -398,7 +401,7 @@
       <br>
       Francis Xiatian Zhang, Jingjing Deng, Robert Lieck and Hubert P. H. Shum
       <br>
-      <em>IEEE Transactions on Medical Robotics and Bionics</em> 2024 | 
+      <em>IEEE Transactions on Medical Robotics and Bionics</em> 2024 |
       <a style="color: #447ec9" href="https://ieeexplore.ieee.org/document/10798514">paper</a> |
       <a style="color: #447ec9" href="https://arxiv.org/abs/2412.06454">arXiv</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/AdaAnticipation">code</a>
@@ -419,7 +422,7 @@
       <br>
       Sisi Zheng, Francis Xiatian Zhang*, Hubert P. H. Shum, Haozheng Zhang, Nan Song, Mingkang Song and Hongxiao Jia
       <br>
-      <em>BMC Psychiatry</em> 2024 | 
+      <em>BMC Psychiatry</em> 2024 |
       <a style="color: #447ec9" href="https://link.springer.com/article/10.1186/s12888-024-06096-1">paper</a>
       <br>Contribution: Built neuroimaging processing, clustering, and statistical analysis pipelines to quantify brain dynamics.
       <div class="publication-tags"><span class="publication-tag">Medical Imaging</span></div>
@@ -428,7 +431,7 @@
       <br>
       Merryn D. Constable, Francis Xiatian Zhang*, Tony Conner, Daniel Monk, Jason Rajsic, Claire Ford, Laura Jillian Park, Alan Platt, Debra Porteous, Lawrence Grierson and Hubert P. H. Shum
       <br>
-      <em>Advances in Health Sciences Education</em> 2024 | 
+      <em>Advances in Health Sciences Education</em> 2024 |
       <a style="color: #447ec9" href="https://link.springer.com/article/10.1007/s10459-024-10369-5">paper</a> |
       <a style="color: #447ec9" href="https://github.com/FrancisXZhang/CPR">code</a> |
       <a style="color: #447ec9" href="https://reshare.ukdataservice.ac.uk/857038/">dataset</a>
@@ -518,7 +521,7 @@ function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("myOverlay").style.display = "none";
@@ -529,6 +532,7 @@ function w3_close() {
   const section = document.getElementById('publications');
   const papers = Array.from(section.querySelectorAll('.publication-group li'));
   const count = document.getElementById('publication-count');
+  const keywordButtons = Array.from(document.querySelectorAll('#publication-keywords button'));
   let selectedTopic = '';
 
   section.querySelectorAll('.publication-tags .publication-tag').forEach(tag => {
@@ -554,7 +558,8 @@ function w3_close() {
     buttons.forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.topic === selectedTopic));
     });
-    count.textContent = selectedTopic ? visible + ' papers · ' + selectedTopic : '';
+    const topicLabel = keywordButtons.find(button => button.dataset.topic === selectedTopic).textContent;
+    count.textContent = selectedTopic ? count.dataset.template.replace('{count}', visible).replace('{topic}', topicLabel) : '';
   }
 
   buttons.forEach(button => button.addEventListener('click', () => {
