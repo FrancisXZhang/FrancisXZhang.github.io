@@ -94,7 +94,7 @@ story = [
         'Bachelor of Medicine — Upper Second-Class Honours.',
     ], italic=True),
     *heading('Research Statement'),
-    p('I work on robot vision, particularly perception and navigation for robotic bronchoscopy. My current research combines geometric modelling and deep learning for depth estimation, visual odometry, and airway segmentation. I am interested in how robots recover 3D structure and motion from images, and how this information can support reliable navigation in challenging environments.'),
+    p('My research focuses on robot vision, particularly 3D perception, motion estimation, and visual navigation. I combine geometric modelling and deep learning, with recent work on depth estimation, visual odometry, and segmentation for medical robotics. I am interested in how robots recover structure and motion from images and use this information to understand and navigate their surroundings.'),
     *heading('Relevant Experience'),
     entry('Research Associate, University of Edinburgh, UK', 'Nov. 2024 – Present', [
         'Robot vision for bronchoscopic navigation: depth estimation, airway segmentation, visual odometry, and failure diagnosis. PI: Dr Mohsen Khadem.',
