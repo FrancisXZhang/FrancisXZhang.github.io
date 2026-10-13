@@ -38,6 +38,8 @@ TRANSLATIONS = [
     ('Our paper', '我们的论文'),
     ('received the <strong>ICRA 2026 Best Paper Award in Medical Robotics</strong>.',
      '获得了 <strong>ICRA 2026 医疗机器人最佳论文奖</strong>。'),
+    ('was selected as a finalist for the <a href="https://2026.ieee-icra.org/awards/"><strong>ICRA 2026 Best Paper Award in Medical Robotics</strong></a>.',
+     '入围 <a href="https://2026.ieee-icra.org/awards/"><strong>ICRA 2026 医疗机器人最佳论文奖</strong></a>。'),
     ('— accepted at <strong>MICCAI 2026</strong>.', '——被 <strong>MICCAI 2026</strong> 接收。'),
     ('— accepted.', '——已接收。'),
     ('Three papers at <strong>ICRA</strong> —', '三篇论文被 <strong>ICRA</strong> 接收：'),
