@@ -34,6 +34,7 @@ TRANSLATIONS = [
     ('> University Profile </a>', '> 大学主页 </a>'),
     ('>Google Scholar</a>', '>谷歌学术</a>'),
     ('<h2>News</h2>', '<h2>动态</h2>'),
+    ('(early June)', '（6 月初）'),
     ('Our paper', '我们的论文'),
     ('received the <strong>ICRA 2026 Best Paper Award in Medical Robotics</strong>.',
      '获得了 <strong>ICRA 2026 医疗机器人最佳论文奖</strong>。'),
