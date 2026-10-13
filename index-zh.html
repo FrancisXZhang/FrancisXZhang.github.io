@@ -32,6 +32,11 @@
   .language-switch {font-size:14px;margin:0 0 20px;}
   .language-switch a {color:#447ec9;}
   .language-switch a[aria-current="page"] {color:inherit;font-weight:bold;text-decoration:none;}
+  .vo-preview {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:8px;text-decoration:none;}
+  .vo-preview-image {display:block;aspect-ratio:1;background-image:url('images/Geometry_Aware_VO.png');background-size:323% 207%;background-repeat:no-repeat;border-radius:4px;}
+  .vo-preview-rgb {background-position:6% 1.5%;}
+  .vo-preview-depth {background-position:6% 100%;}
+  .vo-preview-label {display:block;text-align:center;font-size:12px;margin-top:3px;}
   .news-scroll {
     max-height: 320px;
     overflow-y: auto;
@@ -189,6 +194,24 @@
     <div class="w3-row-padding w3-margin-top">
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>Geometry-Aware VO</h4>
+          <p class="w3-small"><strong>ICRA 2026 · 医疗机器人最佳论文奖</strong></p>
+          <p class="w3-small"><em>Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion</em></p>
+          <a class="vo-preview" href="images/Geometry_Aware_VO.png" aria-label="查看视觉里程计论文中的 RGB 图像与深度结果">
+            <span><span class="vo-preview-image vo-preview-rgb" role="img" aria-label="支气管镜图像中的气道腔口检测与相机朝向估计"></span><span class="vo-preview-label">RGB</span></span>
+            <span><span class="vo-preview-image vo-preview-depth" role="img" aria-label="对应的气道深度估计图"></span><span class="vo-preview-label">深度</span></span>
+          </a>
+          <p class="w3-small">结合基于深度的气道几何信息与高增益观测器融合，改善支气管镜视觉跟踪并降低轨迹漂移。</p>
+          <ul class="w3-small">
+            <li>我的贡献：通过 <a href="#brea-depth">BREA-Depth</a> 提供深度感知基础，支持气道腔口定位和几何朝向估计。</li>
+            <li>在离体肺实验中，相比对照视觉里程计方法，绝对轨迹误差降低超过 50%。</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://ieeexplore.ieee.org/document/11696596">论文</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2607.05162">arXiv</a> | <a style="color:#447ec9" href="https://2026.ieee-icra.org/awards/">奖项</a></p>
+        </div>
+      </div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>FDRAS</h4>
           <p class="w3-small"><strong>MICCAI 2026</strong></p>
           <p class="w3-small"><em>Failure Diagnosis and Repair for Airway Segmentation</em></p>
@@ -217,8 +240,10 @@
         </div>
       </div>
 
+      <div class="w3-clear"></div>
+
       <div class="w3-third w3-margin-bottom">
-        <div class="w3-card w3-white w3-padding" style="height:100%">
+        <div class="w3-card w3-white w3-padding" id="brea-depth" style="height:100%">
           <h4>BREA-Depth</h4>
           <p class="w3-small"><strong>MICCAI 2025</strong></p>
           <p class="w3-small"><em>Bronchoscopy Realistic Airway-geometric Depth Estimation</em></p>
@@ -231,8 +256,6 @@
           <p class="w3-small"><a style="color:#447ec9" href="https://github.com/SIRGLab/BREA-Depth">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_8">论文</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2509.11885">arXiv</a></p>
         </div>
       </div>
-
-      <div class="w3-clear"></div>
 
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">

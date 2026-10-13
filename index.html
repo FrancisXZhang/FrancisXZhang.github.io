@@ -31,6 +31,11 @@
   .language-switch {font-size:14px;margin:0 0 20px;}
   .language-switch a {color:#447ec9;}
   .language-switch a[aria-current="page"] {color:inherit;font-weight:bold;text-decoration:none;}
+  .vo-preview {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:8px;text-decoration:none;}
+  .vo-preview-image {display:block;aspect-ratio:1;background-image:url('images/Geometry_Aware_VO.png');background-size:323% 207%;background-repeat:no-repeat;border-radius:4px;}
+  .vo-preview-rgb {background-position:6% 1.5%;}
+  .vo-preview-depth {background-position:6% 100%;}
+  .vo-preview-label {display:block;text-align:center;font-size:12px;margin-top:3px;}
   .news-scroll {
     max-height: 320px;
     overflow-y: auto;
@@ -192,6 +197,24 @@
     <div class="w3-row-padding w3-margin-top">
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
+          <h4>Geometry-Aware VO</h4>
+          <p class="w3-small"><strong>ICRA 2026 · Best Paper Award in Medical Robotics</strong></p>
+          <p class="w3-small"><em>Geometry-Aware Visual Odometry for Bronchoscopic Navigation via High-Gain Observer Fusion</em></p>
+          <a class="vo-preview" href="images/Geometry_Aware_VO.png" aria-label="View RGB and depth results from the visual odometry paper">
+            <span><span class="vo-preview-image vo-preview-rgb" role="img" aria-label="Bronchoscopy frame with detected lumens and estimated camera heading"></span><span class="vo-preview-label">RGB</span></span>
+            <span><span class="vo-preview-image vo-preview-depth" role="img" aria-label="Corresponding estimated airway depth map"></span><span class="vo-preview-label">Depth</span></span>
+          </a>
+          <p class="w3-small">Combines depth-based airway geometry with high-gain observer fusion to improve bronchoscopic tracking and reduce trajectory drift.</p>
+          <ul class="w3-small">
+            <li>My contribution: provided the depth-perception foundation through <a href="#brea-depth">BREA-Depth</a>, supporting lumen localization and geometric heading estimation.</li>
+            <li>Reduced absolute trajectory error by over 50% compared with baseline visual odometry pipelines in ex-vivo lung experiments.</li>
+          </ul>
+          <p class="w3-small"><a style="color:#447ec9" href="https://ieeexplore.ieee.org/document/11696596">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2607.05162">arXiv</a> | <a style="color:#447ec9" href="https://2026.ieee-icra.org/awards/">Award</a></p>
+        </div>
+      </div>
+
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding" style="height:100%">
           <h4>FDRAS</h4>
           <p class="w3-small"><strong>MICCAI 2026</strong></p>
           <p class="w3-small"><em>Failure Diagnosis and Repair for Airway Segmentation</em></p>
@@ -220,8 +243,10 @@
         </div>
       </div>
 
+      <div class="w3-clear"></div>
+
       <div class="w3-third w3-margin-bottom">
-        <div class="w3-card w3-white w3-padding" style="height:100%">
+        <div class="w3-card w3-white w3-padding" id="brea-depth" style="height:100%">
           <h4>BREA-Depth</h4>
           <p class="w3-small"><strong>MICCAI 2025</strong></p>
           <p class="w3-small"><em>Bronchoscopy Realistic Airway-geometric Depth Estimation</em></p>
@@ -234,8 +259,6 @@
           <p class="w3-small"><a style="color:#447ec9" href="https://github.com/SIRGLab/BREA-Depth">GitHub</a> | <a style="color:#447ec9" href="https://link.springer.com/chapter/10.1007/978-3-032-05114-1_8">Paper</a> | <a style="color:#447ec9" href="https://arxiv.org/abs/2509.11885">arXiv</a></p>
         </div>
       </div>
-
-      <div class="w3-clear"></div>
 
       <div class="w3-third w3-margin-bottom">
         <div class="w3-card w3-white w3-padding" style="height:100%">
