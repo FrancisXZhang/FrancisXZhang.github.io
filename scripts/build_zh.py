@@ -111,7 +111,6 @@ TRANSLATIONS = [
     ('>Robotics</button>', '>机器人</button>'),
     ('>Computer Vision</button>', '>计算机视觉</button>'),
     ('>Medical Imaging</button>', '>医学影像</button>'),
-    ('>Clinical AI</button>', '>临床 AI</button>'),
     ('data-template="{count} papers · {topic}"', 'data-template="{count} 篇论文 · {topic}"'),
     ('<h2>Awards</h2>', '<h2>获奖</h2>'),
     ('2026, ICRA Best Paper Award in Medical Robotics', '2026，ICRA 医疗机器人最佳论文奖'),
