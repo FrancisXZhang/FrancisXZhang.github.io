@@ -1,6 +1,6 @@
 """Build index-zh.html from index.html: python3 scripts/build_zh.py.
 
-Translate the surrounding website while preserving English publication entries.
+Translate the website and contribution notes while preserving English citations.
 Update the corresponding translation when changing English prose; an unmatched
 translation raises an error so the Chinese page cannot silently become stale.
 """
@@ -150,16 +150,48 @@ TRANSLATIONS = [
     ('Powered by', '基于'),
 ]
 
+CONTRIBUTION_TRANSLATIONS = {
+    'Predicts geometric and connectivity error maps to guide targeted repair of airway segmentations under domain shift.':
+        '预测几何误差与连通性误差图，引导域偏移条件下的气道分割定向修复。',
+    'Combines BREA-Depth-based depth perception with high-gain observer fusion to improve bronchoscopic tracking and reduce trajectory drift.':
+        '结合 BREA-Depth 深度感知与高增益观测器融合，改善支气管镜视觉跟踪并降低轨迹漂移。',
+    'Uses tracked bronchoscope poses, kinematic constraints, and model-predictive reference trajectories to assess operator performance.':
+        '利用支气管镜位姿跟踪、运动学约束和基于模型预测的参考轨迹，评估操作者的操作表现。',
+    'Combines continuum robot simulation with photorealistic rendering to generate datasets for robotic bronchoscopy.':
+        '结合连续体机器人仿真与逼真渲染，为机器人支气管镜研究生成数据集。',
+    'Estimates bronchoscope pose directly from video to support navigation in critical care.':
+        '从视频直接估计支气管镜位姿，支持重症监护场景中的导航。',
+    'Adapts foundation models for bronchoscopic depth estimation using depth-aware domain translation, airway structure losses, and airway-specific evaluation metrics.':
+        '通过深度感知域转换、气道结构损失和气道专用评估指标，将基础模型适配于支气管镜深度估计。',
+    'Combines spatial-temporal depth estimation, bi-modal fusion, and a depth-enhanced discriminator to recover occluded anatomy in endoscopic video.':
+        '结合时空深度估计、双模态融合和深度增强判别器，修复内镜视频中被遮挡的解剖结构。',
+    'Supports pose-based Parkinsonian tremor classification through dataset curation, evaluation design, and clinical interpretation.':
+        '通过数据集整理、评估方案设计和临床解读，支持基于姿态的帕金森震颤分类。',
+    'Combines visual and pose features with cross-view training to assess acupuncture and Tuina skills using expert-annotated dual-view datasets.':
+        '结合视觉与姿态特征、跨视角训练及专家标注的双视角数据集，评估针灸和推拿操作技能。',
+    'Learns spatial relationships between surgical instruments with an adaptive graph to anticipate surgical workflow.':
+        '通过自适应图学习手术器械之间的空间关系，预测后续手术工作流程。',
+    'Combines multi-view pose estimation and spatial-temporal graph modelling to assess CPR skills.':
+        '结合多视角姿态估计和时空图建模，评估心肺复苏操作技能。',
+}
+
 
 def build():
     source = SOURCE.read_text(encoding='utf-8')
     start = source.index('    <div class="publication-group">')
     end = source.index('  <p class="w3-small">* = co-first author.</p>', start)
     entries = source[start:end]
-    # Only translate the headings; all citation content stays in English.
+    # Keep titles, authors, venues, links, and topic tags in English.
     entries = entries.replace('<div class="publication-group">', '<div class="publication-group" lang="en">')
     entries = entries.replace('<h4> Conference Papers:</h4>', '<h4 lang="zh-Hans">会议论文</h4>')
     entries = entries.replace('<h4> Journal Papers:</h4>', '<h4 lang="zh-Hans">期刊论文</h4>')
+    for english, chinese in CONTRIBUTION_TRANSLATIONS.items():
+        note = f'<p class="publication-contribution">Contribution: {english}</p>'
+        if note not in entries:
+            raise ValueError(f'Update Chinese contribution translation for changed text: {english}')
+        entries = entries.replace(note, f'<p class="publication-contribution" lang="zh-Hans">贡献：{chinese}</p>')
+    if entries.count('class="publication-contribution"') != len(CONTRIBUTION_TRANSLATIONS):
+        raise ValueError('Add a Chinese translation for each publication contribution.')
     placeholder = '<!-- PUBLICATION_ENTRIES -->'
     page = source[:start] + placeholder + source[end:]
     # Translate the full research introduction before the shared Scholar label.
