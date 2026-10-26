@@ -97,7 +97,7 @@ story = [
     p('My research focuses on robot vision, particularly 3D perception, motion estimation, and visual navigation. I combine geometric modelling and deep learning, with recent work on depth estimation, visual odometry, and segmentation for medical robotics. I am interested in how robots recover structure and motion from images and use this information to understand and navigate their surroundings.'),
     *heading('Relevant Experience'),
     entry('Research Associate, University of Edinburgh, UK', 'Nov. 2024 – Present', [
-        'Robot vision for bronchoscopic navigation: depth estimation, airway segmentation, visual odometry, and failure diagnosis. PI: Dr Mohsen Khadem.',
+        'Robot vision for bronchoscopic navigation: depth estimation, airway segmentation, visual odometry, and failure diagnosis. Research supervisor: Dr Mohsen Khadem.',
         'Collaborative work on continuum robot simulation and objective bronchoscopy skill assessment.',
     ]),
     entry('Research Assistant, Durham University, UK', 'Oct.–Nov. 2023;<br/>Jul.–Sep. 2024', [
@@ -120,7 +120,8 @@ story = [
 html = (ROOT / 'index.html').read_text()
 research = html.split('id="publications">', 1)[1].split('<!-- The Awards Section -->', 1)[0]
 publications = re.findall(r'<li data-year="(\d+)" data-venue="([^"]+)"[^>]*>(.*?)</li>', research, re.S)
-assert len(publications) == 13, 'Review extraction after changing the website structure.'
+expected_count = len(re.findall(r'<li\b[^>]*\bdata-year=', research))
+assert publications and len(publications) == expected_count, 'Review extraction after changing the website structure.'
 venue_names = {
     'MICCAI': 'International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)',
     'ICRA': 'IEEE International Conference on Robotics and Automation (ICRA)',
